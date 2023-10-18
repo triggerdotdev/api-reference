@@ -37,7 +37,7 @@ npm i
 Each file in `src` is either a Job or a separate set of jobs that can be run separately. For example, the `src/cronScheduledBasic.ts` file can be run with:
 
 ```sh
-npm run github-sdk-reference
+npm run github
 ```
 
 This will open up a local server using `express` on port 8080. Then in a <u>separate terminal window</u> you can run the `@trigger.dev/cli dev` command:

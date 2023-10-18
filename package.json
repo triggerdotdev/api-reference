@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "github-sdk-reference": "node -r dotenv/config -r ts-node/register src/gitHubSDKReference.ts",
+    "github": "node -r dotenv/config -r ts-node/register src/gitHub.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
