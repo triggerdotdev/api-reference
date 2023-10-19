@@ -4,22 +4,21 @@ import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import z from "zod";
 
-// Configure dotenv to override existing environment variables with values from the .env file.
-config({ override: true });
+const client = new TriggerClient({
+  id: "api-reference",
+});
 
+// Create a service account and project: https://cloud.google.com/iam/docs/service-account-overview
 // Create a JWT (JSON Web Token) authentication instance for Google APIs.
+// https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest/google-auth-library/jwt
 const auth = new JWT({
   email: process.env.CLIENT_EMAIL, // The email associated with the service account
-  key: process.env.PRIVATE_KEY!.replace(/\\n/gm, "\n"), // The private key associated with the service account
+  key: process.env.PRIVATE_KEY!.split(String.raw`\n`).join("\n"), // The private key associated with the service account
   scopes: "https://www.googleapis.com/auth/spreadsheets", // The desired scope for accessing Google Sheets
 });
 
-const client = new TriggerClient({
-  id: "api-reference",
-  apiKey: process.env.TRIGGER_API_KEY,
-});
-
 // Initialize the Google Sheets API
+// You have to enable the Google Sheets API https://console.cloud.google.com/apis/
 const sheets = google.sheets({ version: "v4", auth });
 
 client.defineJob({
@@ -31,12 +30,13 @@ client.defineJob({
     schema: z.object({
       fullName: z.string(),
       githubUrl: z.string(),
+      range: z.string().optional(),
     }),
   }),
   run: async (payload, io, ctx) => {
-    const { fullName, githubUrl } = payload;
+    const { fullName, githubUrl, range } = payload;
 
-    //wrap an SDK call in io.runTask so it's resumable and displays in logs
+    // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
       "Google Sheets append row",
       async () => {
@@ -45,8 +45,10 @@ client.defineJob({
         const sheetsAPI = sheets.spreadsheets.values;
 
         await sheetsAPI.append({
+          // You must share your Google Sheet with your service account email otherwise the job will fail
           spreadsheetId: process.env.SPREADSHEET_ID,
-          range: process.env.SPREADSHEET_RANGE,
+          // Set a spreadsheet range
+          range: range,
           valueInputOption: "USER_ENTERED",
           insertDataOption: "INSERT_ROWS",
           requestBody: {
@@ -54,7 +56,8 @@ client.defineJob({
           },
         });
       },
-      //you can add metadata to the task to improve the display in the logs
+
+      // Add metadata to the task to improve the display in the logs
       { name: "Google Sheets append", icon: "google" }
     );
   },
