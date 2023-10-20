@@ -38,6 +38,8 @@ client.defineJob({
     await io.runTask(
       "Google Drive File Rename",
       async () => {
+        
+        // Important Note: Don't forget to share the Google Drive file with the service account email for this code to work.
         await drive.files.update({
           fileId,
           requestBody: {
