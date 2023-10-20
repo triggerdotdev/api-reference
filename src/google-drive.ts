@@ -27,7 +27,7 @@ client.defineJob({
   trigger: eventTrigger({
     name: "google-drive-file-rename",
     schema: z.object({
-      fileId: z.string(), // 
+      fileId: z.string(), // The fileId is a unique identifier found in the Google Drive sharing link. Example: https://drive.google.com/file/d/FILE_ID/view
       newName: z.string(),
     }),
   }),
