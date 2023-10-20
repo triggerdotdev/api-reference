@@ -21,13 +21,13 @@ const auth = new JWT({
 const drive = google.drive({ version: "v2", auth });
 
 client.defineJob({
-  id: "google-drive-rename",
+  id: "google-drive-file-rename",
   name: "Google drive file rename",
   version: "1.0.0",
   trigger: eventTrigger({
-    name: "google-drive-rename",
+    name: "google-drive-file-rename",
     schema: z.object({
-      fileId: z.string(),
+      fileId: z.string(), // 
       newName: z.string(),
     }),
   }),
@@ -36,7 +36,7 @@ client.defineJob({
 
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
-      "Google Drive Rename",
+      "Google Drive File Rename",
       async () => {
         await drive.files.update({
           fileId,
@@ -47,7 +47,7 @@ client.defineJob({
       },
 
       // Add metadata to the task to improve the display in the logs
-      { name: "Google drive rename", icon: "google" }
+      { name: "Google drive file rename", icon: "google" }
     );
   },
 });
