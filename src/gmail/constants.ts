@@ -1,0 +1,1 @@
+export const TOKEN_PATH = "src/gmail/token.json"

@@ -52,3 +52,4 @@ apps/**/public/build
 /test-results/
 /playwright-report/
 /playwright/.cache/
+src/gmail/token.json
