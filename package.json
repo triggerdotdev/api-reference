@@ -6,6 +6,7 @@
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
+    "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
@@ -19,6 +20,7 @@
     "googleapis": "^105.0.0",
     "octokit": "^3.1.1",
     "react": "^18.2.0",
+    "twilio": "^4.19.0",
     "react-dom": "^18.2.0",
     "zod": "^3.21.4"
   },
