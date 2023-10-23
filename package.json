@@ -7,6 +7,7 @@
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
+    "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
