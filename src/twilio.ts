@@ -2,13 +2,12 @@ import twilio from "twilio";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
-const client = new TriggerClient({
-  id: "api-reference",
-});
+const client = new TriggerClient({ id: "api-reference" });
 
 // Initialize the Twilio instance
 // Twilio SDK https://github.com/twilio/twilio-node
 // Your AccountSID and Auth Token from console.twilio.com
+// https://www.twilio.com/docs/sms/quickstart/node
 const twilioClient = twilio(
   process.env.TWILIO_ACCOUNT_SID,
   process.env.TWILIO_AUTH_TOKEN
@@ -21,9 +20,9 @@ client.defineJob({
   trigger: eventTrigger({
     name: "twilio-send-message",
     schema: z.object({
-      from: z.string(),
-      to: z.string(),
-      body: z.string(),
+      from: z.string(), // Your Twilio phone number. Adding 'whatsapp:' before the number will send a WhatsApp message. https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn
+      to: z.string(), // The phone number you want to send the message.
+      body: z.string(), // The message body
     }),
   }),
   run: async (payload, io, ctx) => {
