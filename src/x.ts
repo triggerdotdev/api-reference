@@ -55,11 +55,10 @@ client.defineJob({
     await io.runTask(
       "Tweet X",
       async () => {
-        // Add the text of the Tweet you are creating
-        requestOptions.body = JSON.stringify(payload);
-
-        // Make request using Fetch API
-        await fetch(endpointURL, requestOptions);
+        return await fetch(endpointURL, {
+          ...requestOptions,
+          body: JSON.stringify(payload),
+        }).then((response) => response.json());
       },
 
       // Add metadata to the task to improve the display in the logs
