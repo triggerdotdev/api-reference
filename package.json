@@ -9,10 +9,12 @@
     "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
+    "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
+    "@hubspot/api-client": "^10.0.0",
     "@shopify/shopify-api": "^8.0.1",
     "@trigger.dev/cli": "^2.1.3",
     "@trigger.dev/express": "^2.1.3",
@@ -20,8 +22,8 @@
     "googleapis": "^105.0.0",
     "octokit": "^3.1.1",
     "react": "^18.2.0",
-    "twilio": "^4.19.0",
     "react-dom": "^18.2.0",
+    "twilio": "^4.19.0",
     "zod": "^3.21.4"
   },
   "trigger.dev": {
