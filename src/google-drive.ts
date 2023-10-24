@@ -11,8 +11,8 @@ const client = new TriggerClient({
 // Create a JWT (JSON Web Token) authentication instance for Google APIs.
 // https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest/google-auth-library/jwt
 const auth = new JWT({
-  email: process.env.CLIENT_EMAIL, // The email associated with the service account
-  key: process.env.PRIVATE_KEY!.split(String.raw`\n`).join("\n"), // The private key associated with the service account
+  email: process.env.GOOGLE_CLIENT_EMAIL, // The email associated with the service account
+  key: process.env.GOOGLE_PRIVATE_KEY!.split(String.raw`\n`).join("\n"), // The private key associated with the service account
   scopes: "https://www.googleapis.com/auth/drive", // The desired scope for accessing Google Drive
 });
 
@@ -38,7 +38,6 @@ client.defineJob({
     await io.runTask(
       "Google Drive File Rename",
       async () => {
-        
         // Important Note: Don't forget to share the Google Drive file with the service account email for this code to work.
         await drive.files.update({
           fileId,
