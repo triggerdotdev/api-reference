@@ -55,6 +55,7 @@ client.defineJob({
     await io.runTask(
       "Tweet X",
       async () => {
+        // Make request using Fetch API
         return await fetch(endpointURL, {
           ...requestOptions,
           body: JSON.stringify(payload),
