@@ -52,7 +52,7 @@ client.defineJob({
 
         // Update the product variant price
         await client.put({
-          path: `admin/api/${ApiVersion.October23}/variants/${id}.json`,
+          path: `variants/${id}`,
           data: { variant: { id, price } },
         });
       },
