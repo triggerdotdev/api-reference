@@ -7,7 +7,7 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // Create tokens at
 // https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api
-const endpointURL = `https://api.twitter.com/2/tweets`;
+const endpointURL = "https://api.twitter.com/2/tweets";
 const token = {
   key: process.env.X_ACCESS_TOKEN!,
   secret: process.env.X_ACCESS_TOKEN_SECRET!,
@@ -29,6 +29,17 @@ const authHeader = oauth.toHeader(
   oauth.authorize({ url: endpointURL, method: "POST" }, token)
 );
 
+// Create request options
+const requestOptions: RequestInit = {
+  method: "POST",
+  headers: {
+    Authorization: authHeader["Authorization"],
+    "user-agent": "v2CreateTweetJS",
+    "content-type": "application/json",
+    accept: "application/json",
+  },
+};
+
 client.defineJob({
   id: "tweet-x",
   name: "Tweet X",
@@ -40,23 +51,15 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    const { text } = payload;
-
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
       "Tweet X",
       async () => {
-        // This is the Background Fetch SDK (https://trigger.dev/docs/sdk/io/backgroundfetch)
-        await io.backgroundFetch("Posting tweet", endpointURL, {
-          method: "POST",
-          headers: {
-            Authorization: authHeader["Authorization"],
-            "user-agent": "v2CreateTweetJS",
-            "content-type": "application/json",
-            accept: "application/json",
-          },
-          body: JSON.stringify({ text }),
-        });
+        // Add the text of the Tweet you are creating
+        requestOptions.body = JSON.stringify(payload);
+
+        // Make request using Fetch API
+        await fetch(endpointURL, requestOptions);
       },
 
       // Add metadata to the task to improve the display in the logs
