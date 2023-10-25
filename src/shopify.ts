@@ -33,42 +33,27 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    const { productVariantId, price } = payload;
+    const { productVariantId: id, price } = payload;
 
     // Use io.runTask to make the SDK call resumable and log-friendly
     await io.runTask(
       "Shopify update product variant price",
       async () => {
         // Initialize a Shopify session
-        const shopifySession = shopify.session.customAppSession(
+        const session = shopify.session.customAppSession(
           process.env.SHOPIFY_HOSTNAME!
         );
 
         // The access token can be found in the Shopify Admin Apps page
-        shopifySession.accessToken = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
+        session.accessToken = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
 
-        // Initialize a GraphQL Admin Client
-        const graphQLAdminClient = new shopify.clients.Graphql({
-          session: shopifySession,
-        });
+        // Initialize a Shopify REST client
+        const client = new shopify.clients.Rest({ session });
 
-        // Execute a GraphQL mutation to update the product variant's price
-        await graphQLAdminClient.query({
-          data: {
-            query: `mutation ($input: ProductVariantInput!) {
-              productVariantUpdate(input: $input) {
-                productVariant {
-                  price
-                }
-              }
-            }`,
-            variables: {
-              input: {
-                id: `gid://shopify/ProductVariant/${productVariantId}`,
-                price,
-              },
-            },
-          },
+        // Update the product variant price
+        await client.put({
+          path: `variants/${id}`,
+          data: { variant: { id, price } },
         });
       },
 
