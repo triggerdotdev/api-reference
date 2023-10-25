@@ -2,12 +2,11 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 import jsforce from "jsforce";
 
-const client = new TriggerClient({
-  id: "api-reference",
-});
+const client = new TriggerClient({ id: "api-reference" });
 
 // Create a Salesforce account: https://developer.salesforce.com/signup
 // jsforce SDK: https://developer.salesforce.com/docs/platform/functions/guide/develop.html#use-salesforce-apis
+// Salesforce provides API access for the following editions: Enterprise,  Unlimited, Developer or Performance Editions
 // Salesforce connection instance
 const conn = new jsforce.Connection({
   loginUrl: process.env.SF_LOGIN_URL,
