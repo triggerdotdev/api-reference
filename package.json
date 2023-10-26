@@ -14,6 +14,7 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
