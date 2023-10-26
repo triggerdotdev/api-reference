@@ -5,6 +5,7 @@ const asana = require("asana");
 
 const client = new TriggerClient({ id: "api-reference" });
 
+// Create a personal access token: https://developers.asana.com/docs/personal-access-token
 const asanaClient = asana.Client.create().useAccessToken(
   process.env.ASANA_ACCESS_TOKEN
 );
@@ -16,6 +17,9 @@ client.defineJob({
   trigger: eventTrigger({
     name: "asana.get.user",
     schema: z.object({
+      // This can either be the string "me", an email, or the gid of a user.
+      // You can get your user gid by first logging in to Asana in your browser,
+      // then visiting https://app.asana.com/api/1.0/users/me.
       userGid: z.string(),
     }),
   }),

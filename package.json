@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
-    "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
@@ -15,7 +14,6 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
-    "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
