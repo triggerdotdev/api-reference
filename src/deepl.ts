@@ -4,6 +4,10 @@ import * as deepl from "deepl-node";
 
 const client = new TriggerClient({ id: "api-reference" });
 
+// API documentation: https://www.deepl.com/docs-api/api-access
+// 
+// This code uses the deepl-node library.
+// You can find more examples and usage details at: https://github.com/DeepLcom/deepl-node
 const translator = new deepl.Translator(process.env.DEEPL_AUTH_KEY!);
 
 client.defineJob({
@@ -14,7 +18,7 @@ client.defineJob({
     name: "deepl.translate",
     schema: z.object({
       text: z.string(),
-      targetLang: z.string(),
+      targetLang: z.string(), // View availble languages: https://www.deepl.com/docs-api/translate-text
     }),
   }),
 
