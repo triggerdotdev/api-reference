@@ -5,7 +5,7 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 const client = new TriggerClient({ id: "api-reference" });
 
 // Get API key from https://docs.lemonsqueezy.com/api#authentication
-const ls = new LemonSqueezy(process.env.LEMONSQUEEZY_API_KEY ?? "");
+const ls = new LemonSqueezy(process.env.LEMONSQUEEZY_API_KEY!);
 
 // Using official SDK; https://github.com/lmsqueezy/lemonsqueezy.js
 client.defineJob({
@@ -17,9 +17,11 @@ client.defineJob({
   }),
   run: async (payload, io) => {
     await io.runTask(
-      "Get repo",
+      "Get Lemon Squeezy current user",
       async () => {
         const user = await ls.getUser();
+        // The return value has to be JSON serialiazable as it is stored in the databse.
+        // Thus stringifying and then parsing it in order to make sure that it is always a serializable JSON
         return JSON.parse(JSON.stringify(user));
       },
       //you can add metadata to the task to improve the display in the logs
