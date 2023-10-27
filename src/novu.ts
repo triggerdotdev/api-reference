@@ -42,7 +42,7 @@ client.defineJob({
           }
         );
 
-        return subscriber;
+        return subscriber.data;
       },
       //you can add metadata to the task to improve the display in the logs
       { name: "Create subscriber", icon: "novu" }
