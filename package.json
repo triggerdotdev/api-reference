@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
+    "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-lambda": "^3.437.0",
+    "@aws-sdk/credential-providers": "^3.437.0",
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
     "@shopify/shopify-api": "^8.0.1",
