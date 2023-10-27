@@ -54,44 +54,53 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    const images = await io.runTask(
-      "Create image from text",
-      async () => {
-        const response = await fetch(
-          `${apiHost}/v1/generation/${engineId}/text-to-image`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-              Authorization: `Bearer ${apiKey}`,
-            },
-            body: JSON.stringify({
-              text_prompts: payload.text_prompts,
-              cfg_scale: payload.cfg_scale ?? 7,
-              height: payload.height ?? 1024,
-              width: payload.width ?? 1024,
-              steps: payload.steps ?? 50,
-              samples: payload.samples ?? 1,
-            }),
-          }
-        );
-
-        return response.json() as Promise<GenerationResponse>;
+    // Here we use `backgroundFetch` which allows you to fetch data from
+    // a URL that can take longer than the serverless timeout.
+    const response = (await io.backgroundFetch(
+      "create-image-from-text",
+      `${apiHost}/v1/generation/${engineId}/text-to-image`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          text_prompts: payload.text_prompts,
+          cfg_scale: payload.cfg_scale ?? 7,
+          height: payload.height ?? 1024,
+          width: payload.width ?? 1024,
+          steps: payload.steps ?? 50,
+          samples: payload.samples ?? 1,
+        }),
       },
-      { name: "Create image from text", icon: "stability" }
-    );
+      {
+        "429": {
+          strategy: "backoff",
+          limit: 10,
+          minTimeoutInMs: 1000,
+          maxTimeoutInMs: 60000,
+          factor: 2,
+          randomize: true,
+        },
+      }
+    )) as GenerationResponse;
 
-    // Do something with the image
-    await io.runTask("Save image", async () => {
-      images.artifacts.forEach((image, index) => {
-        const imageUrl = `data:image/png;base64,${image.base64}`;
-        // Log the URL to the console
-        io.logger.info(`Image ${index + 1}/${payload.samples ?? 1}:`, {
-          imageUrl,
-        });
-      });
-    });
+    // Do something with the returned image(s).
+    // Learn about using cache keys with loops here:
+    // https://trigger.dev/docs/documentation/concepts/resumability#how-to-use-cache-keys-with-loops
+    for (const [index, artifact] of response.artifacts.entries()) {
+      await io.runTask(
+        `Image ${index + 1}/${payload.samples ?? 1}`,
+        async () => {
+          const imageUrl = `data:image/png;base64,${artifact.base64}`;
+          return imageUrl;
+        }
+      );
+    }
+
+    return response;
   },
 });
 
