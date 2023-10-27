@@ -4,14 +4,11 @@ import z from "zod";
 
 const client = new TriggerClient({ id: "api-reference" });
 
+// API Reference: https://developers.notion.com/reference/intro
 // Create a new integration and access your token at https://www.notion.so/my-integrations 
+// Create a Notion client
 const notion = new Client({
  auth: process.env.NOTION_TOKEN!,
-});
-
-// Define the job payload schema
-const payloadSchema = z.object({
- pageId: z.string(), // The ID of the Notion page to retrieve
 });
 
 // Define the job trigger
@@ -21,19 +18,18 @@ client.defineJob({
  version: "1.0.0",
  trigger: eventTrigger({
    name: "notion-get-page",
-   schema: payloadSchema,
- }),
+   schema: z.object({
+    pageId: z.string(), // The ID of the Notion page to retrieve
+   }), 
+  }),
  run: async (payload, io, ctx) => {
-  const page = await io.runTask(
-    "Get Notion page",
-    async () => {
+   const page = await io.runTask(
+     "Get Notion page",
+     async () => {
       // Retrieve the Notion page
       return notion.pages.retrieve({ page_id: payload.pageId });
     },
-    {
-      name: "Get page",
-      icon: "notion"
-    }
+    { name: "Get page", icon: "notion" }
   );
 
   //  Return the page object
