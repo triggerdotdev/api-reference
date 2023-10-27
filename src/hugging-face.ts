@@ -16,8 +16,13 @@ client.defineJob({
     trigger: eventTrigger({
         name: "hugging-face-inference",
         schema: z.object({
-            model: z.string(), // Hugging Face model name or ID
-            inputs: z.string(), // Text to input the model
+            // Hugging Face model name or ID.
+            // Ex: "distilbert-base-uncased-finetuned-sst-2-english"
+            // More models: https://huggingface.co/models?pipeline_tag=text-classification
+            model: z.string(),
+            // Text to input the model.
+            // Ex: "Such a nice weather outside!"
+            inputs: z.string(),
         }),
     }),
     run: async (payload, io, ctx) => {
