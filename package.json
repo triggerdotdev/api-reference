@@ -17,6 +17,7 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "loops": "node -r dotenv/config -r ts-node/register src/loops.ts",
@@ -26,6 +27,7 @@
 
   },
   "dependencies": {
+    "@doist/todoist-api-typescript": "^3.0.0",
     "@discordjs/core": "^1.0.1",
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
