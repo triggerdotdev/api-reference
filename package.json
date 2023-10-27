@@ -16,6 +16,7 @@
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
+    "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
