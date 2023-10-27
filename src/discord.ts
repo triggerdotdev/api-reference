@@ -1,6 +1,5 @@
 import { REST } from "@discordjs/rest";
-import { WebSocketManager } from "@discordjs/ws";
-import { GatewayIntentBits, Client } from "@discordjs/core";
+import { API } from "@discordjs/core";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
@@ -16,15 +15,8 @@ const rest = new REST({ version: "10" }).setToken(
   process.env.DISCORD_BOT_TOKEN!
 );
 
-// Create a gateway to receive events
-const gateway = new WebSocketManager({
-  token: process.env.DISCORD_BOT_TOKEN!,
-  intents: GatewayIntentBits.MessageContent,
-  rest,
-});
-
 // Create a client to emit relevant events.
-const discordClient = new Client({ rest, gateway });
+const discordApi = new API(rest);
 
 client.defineJob({
   id: "discord-send-message",
@@ -45,7 +37,7 @@ client.defineJob({
       "Discord send message",
       async () => {
         // See more https://discord.js.org/docs/packages/core/1.0.1/ChannelsAPI:Class
-        const channelsAPI = discordClient.api.channels;
+        const channelsAPI = discordApi.channels;
         await channelsAPI.createMessage(channelId, { content });
       },
 
