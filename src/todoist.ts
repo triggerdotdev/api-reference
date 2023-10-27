@@ -7,7 +7,7 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // https://developer.todoist.com/rest/v2/?javascript#getting-started
 // find your api reference https://todoist.com/help/articles/find-your-api-token-Jpzx9IIlB
-const todoistClientApi = new TodoistApi(process.env.T0DOIST_API_REF)
+const todoistClientApi = new TodoistApi(process.env.T0DOIST_API_REF!)
 
 
 client.defineJob({
