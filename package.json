@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
@@ -15,6 +16,7 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
