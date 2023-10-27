@@ -23,6 +23,7 @@
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "loops": "node -r dotenv/config -r ts-node/register src/loops.ts",
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
+    "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
 
@@ -32,6 +33,7 @@
     "@discordjs/core": "^1.0.1",
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
+    "@novu/node": "^0.20.0",
     "@huggingface/inference": "^2.6.4",
     "@shopify/shopify-api": "^8.0.1",
     "@trigger.dev/cli": "^2.1.3",
