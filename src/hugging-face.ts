@@ -10,33 +10,33 @@ const client = new TriggerClient({ id: "api-reference" });
 const hf = new HfInference(process.env.HUGGING_FACE_API_KEY);
 
 client.defineJob({
-    id: "hugging-face-inference",
-    name: "Hugging Face inference",
-    version: "1.0.0",
-    trigger: eventTrigger({
-        name: "hugging-face-inference",
-        schema: z.object({
-            // Hugging Face model name or ID.
-            // Ex: "distilbert-base-uncased-finetuned-sst-2-english"
-            // More models: https://huggingface.co/models?pipeline_tag=text-classification
-            model: z.string(),
-            // Text to input the model.
-            // Ex: "Such a nice weather outside!"
-            inputs: z.string(),
-        }),
+  id: "hugging-face-inference",
+  name: "Hugging Face inference",
+  version: "1.0.0",
+  trigger: eventTrigger({
+    name: "hugging-face-inference",
+    schema: z.object({
+      // Hugging Face model name or ID.
+      // Example: "distilbert-base-uncased-finetuned-sst-2-english"
+      // More models: https://huggingface.co/models?pipeline_tag=text-classification
+      model: z.string(),
+      // Text to input to the model.
+      // Example: "Such nice weather outside!"
+      inputs: z.string(),
     }),
-    run: async (payload, io, ctx) => {
-        // Use io.runTask to make the SDK call resumable and log-friendly
-        await io.runTask(
-            "Hugging Face inference",
-            async () => {
-                // Call the Hugging Face API
-                return await hf.textClassification(payload);
-            },
-            // Add metadata to the task for improved log display
-            { name: "Hugging Face inference", icon: "hugging-face" }
-        );
-    },
+  }),
+  run: async (payload, io, ctx) => {
+    // Use io.runTask to make the SDK call resumable and log-friendly
+    await io.runTask(
+      "Hugging Face inference",
+      async () => {
+        // Call the Hugging Face API
+        return await hf.textClassification(payload);
+      },
+      // Add metadata to the task for improved log display
+      { name: "Hugging Face inference", icon: "hugging-face" }
+    );
+  },
 });
 
 import { createExpressServer } from "@trigger.dev/express";
