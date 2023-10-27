@@ -2,8 +2,6 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
 const client = new TriggerClient({ id: "api-reference" });
-// Create tokens at
-// https://loops.so/docs/api
 
 // Replace this URL with the actual API endpoint you want to call in a loop
 const endpointURL = `${process.env.LOOPS_BASE_URL}/contacts/create`;
@@ -13,6 +11,9 @@ const requestOptions: RequestInit = {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
+        // To create an API key for Loops, go to the API settings in your account, 
+        // generate a new key, set permissions, and securely manage and integrate it into your applications.
+        // https://loops.so/docs/api
         "Authorization": `Bearer ${process.env.LOOPS_API_KEY}`,
     }
 };
