@@ -15,9 +15,11 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
+    "@doist/todoist-api-typescript": "^3.0.0",
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
     "@shopify/shopify-api": "^8.0.1",
