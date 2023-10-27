@@ -15,6 +15,7 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
@@ -32,6 +33,7 @@
     "octokit": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "svix": "^1.13.0",
     "twilio": "^4.19.0",
     "zod": "^3.21.4"
   },
