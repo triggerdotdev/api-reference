@@ -19,9 +19,11 @@
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
+    "loops": "node -r dotenv/config -r ts-node/register src/loops.ts",
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
+
   },
   "dependencies": {
     "@discordjs/core": "^1.0.1",
