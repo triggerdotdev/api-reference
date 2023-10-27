@@ -13,7 +13,8 @@
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
-    "dev:trigger": "trigger-cli dev --port 8080"
+    "dev:trigger": "trigger-cli dev --port 8080",
+    "loops": "node -r dotenv/config -r ts-node/register src/loops.ts"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
