@@ -3,6 +3,7 @@ import z from "zod";
 
 const client = new TriggerClient({ id: "api-reference" });
 
+// Docs: https://developer.brex.com/openapi/team_api/#tag/Titles
 // API: https://developer.brex.com/openapi/team_api/#operation/createTitle
 const endpointURL = `${process.env.BREX_BASE_URL}/titles`; // Replace with the Other Brex API endpoint 
 
@@ -24,7 +25,7 @@ client.defineJob({
     trigger: eventTrigger({
         name: "Brex Create Title",
         schema: z.object({
-            name: z.string() // Name of the title
+            name: z.string() // Name of the title. You can see the all titles in the teams section. https://dashboard.brex.com/p/team/titles
         }),
     }),
     run: async (payload, io, ctx) => {
