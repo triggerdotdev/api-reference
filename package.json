@@ -17,11 +17,13 @@
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
+    "notion": "node -r dotenv/config -r ts-node/register src/notion.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
+    "@notionhq/client": "^2.2.13",
     "@shopify/shopify-api": "^8.0.1",
     "@trigger.dev/cli": "^2.1.3",
     "@trigger.dev/express": "^2.1.3",
