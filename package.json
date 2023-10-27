@@ -6,6 +6,7 @@
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
+    "discord": "node -r dotenv/config -r ts-node/register src/discord.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
@@ -17,10 +18,12 @@
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
+    "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
+    "@discordjs/core": "^1.0.1",
     "@google-cloud/local-auth": "^2.1.0",
     "@hubspot/api-client": "^10.0.0",
     "@huggingface/inference": "^2.6.4",
@@ -36,6 +39,7 @@
     "octokit": "^3.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "svix": "^1.13.0",
     "twilio": "^4.19.0",
     "zod": "^3.21.4"
   },
