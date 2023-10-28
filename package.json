@@ -18,6 +18,7 @@
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
+    "youtube": "node -r dotenv/config -r ts-node/register src/youtube.ts",
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
@@ -26,7 +27,6 @@
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
-
   },
   "dependencies": {
     "@doist/todoist-api-typescript": "^3.0.0",
