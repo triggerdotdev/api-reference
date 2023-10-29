@@ -26,8 +26,7 @@
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "dev:trigger": "trigger-cli dev --port 8080",
-    "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
-    "rippling": "node -r dotenv/config -r ts-node/register src/rippling.ts"
+    "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts"
   },
   "dependencies": {
     "@discordjs/core": "^1.0.1",
