@@ -4,8 +4,14 @@ import z from "zod";
 
 const client = new TriggerClient({ id: "api-reference" });
 
-// API Reference: https://developers.notion.com/reference/intro
+// API Reference: https://developers.notion.com/reference/intro 
 // Create a new integration and access your token at https://www.notion.so/my-integrations 
+// The integration needs to be added as a 'connection' to the page
+// Here is how you do it: 
+// 1. Click on three dots at the top right corner of your parent notion page
+// 2. click on 'Add connection' and choose your integration and confirm
+// 3. Now it will have access to page and all the child pages too
+
 // Create a Notion client
 const notion = new Client({
  auth: process.env.NOTION_TOKEN!,
