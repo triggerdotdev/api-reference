@@ -29,7 +29,7 @@ client.defineJob({
 
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
-      "Google map Geocode",
+      "Google Map Geocode",
       async () => {
         // Make the geocode request
 
