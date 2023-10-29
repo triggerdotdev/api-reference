@@ -10,6 +10,7 @@
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
+    "google-maps": "node -r dotenv/config -r ts-node/register src/google-maps.ts",
     "salesforce": "node -r dotenv/config -r ts-node/register src/salesforce.ts",
     "google-calendar": "node -r dotenv/config -r ts-node/register src/google-calendar.ts",
     "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
@@ -26,12 +27,12 @@
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
-
   },
   "dependencies": {
     "@doist/todoist-api-typescript": "^3.0.0",
     "@discordjs/core": "^1.0.1",
     "@google-cloud/local-auth": "^2.1.0",
+    "@googlemaps/google-maps-services-js": "^3.3.41",
     "@hubspot/api-client": "^10.0.0",
     "@novu/node": "^0.20.0",
     "@huggingface/inference": "^2.6.4",
