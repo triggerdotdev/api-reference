@@ -4,17 +4,22 @@ import { stringify } from "querystring";
 
 const client = new TriggerClient({ id: "api-reference" });
 
-const accessTokenEndpointURL = "https://www.reddit.com/api/v1/access_token";
-const endpointURL = "https://oauth.reddit.com/api/submit"; // Use this endpoint to submit a post on Reddit. https://www.reddit.com/dev/api#POST_api_submit
+const endpointURLs = {
+  accessToken: "https://www.reddit.com/api/v1/access_token",
+  submit: "https://oauth.reddit.com/api/submit",
+  revoke: "https://www.reddit.com/api/v1/revoke_token",
+};
 
 // Get the Reddit client id and secret follow the instructions here:
 // https://github.com/reddit-archive/reddit/wiki/OAuth2
-const accessTokenRequestOptions: RequestInit = {
+const requestOptions: RequestInit = {
   method: "POST",
   body: stringify({
     grant_type: "password",
     username: process.env.REDDIT_USERNAME,
     password: process.env.REDDIT_PASSWORD,
+    scope: "submit",
+    duration: "temporary",
   }),
   headers: {
     Authorization: `Basic ${Buffer.from(
@@ -23,9 +28,6 @@ const accessTokenRequestOptions: RequestInit = {
     "Content-Type": "application/x-www-form-urlencoded",
   },
 };
-
-// Create an authorization header global scope
-let requestOptions: RequestInit | undefined;
 
 client.defineJob({
   id: "reddit-post",
@@ -43,32 +45,44 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    // Get the access token
-    // First time we need to get the access token
-    if (!requestOptions) {
-      const response = await fetch(
-        accessTokenEndpointURL,
-        accessTokenRequestOptions
-      );
-      const responseJson = await response.json();
-      requestOptions = {
-        method: "POST",
-        headers: {
-          Authorization: `bearer ${responseJson.access_token}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      };
-    }
-
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
       "Reddit Post",
       async () => {
-        // Make the request to the Reddit API
-        return await fetch(endpointURL, {
-          ...requestOptions,
-          body: stringify({ ...payload, api_type: "json" }),
-        }).then((response) => response.json());
+        // Getting an access token
+        const accessToken = await io.runTask(
+          "Getting access token",
+          async () => {
+            return await fetch(endpointURLs.accessToken, requestOptions).then(
+              (response) => response.json()
+            );
+          }
+        );
+
+        // Posting on reddit
+        const response = await io.runTask("Posting on subreddit", async () => {
+          return await fetch(endpointURLs.submit, {
+            ...requestOptions,
+            headers: {
+              ...requestOptions.headers,
+              Authorization: `bearer ${accessToken.access_token}`,
+            },
+            body: stringify({ ...payload, api_type: "json" }),
+          }).then((response) => response.json());
+        });
+
+        // Revoking the access token
+        await io.runTask("Revoking access token", async () => {
+          return await fetch(endpointURLs.revoke, {
+            ...requestOptions,
+            body: stringify({
+              token_type_hint: "access_token",
+              token: accessToken.access_token,
+            }),
+          }).then((response) => response.status);
+        });
+
+        return response;
       },
       // Add metadata to the task to improve the display in the logs
       { name: "Reddit Post", icon: "reddit" }
