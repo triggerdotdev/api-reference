@@ -25,6 +25,7 @@
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
+    "instagram": "node -r dotenv/config -r ts-node/register src/instagram.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
 
   },
