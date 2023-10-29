@@ -25,8 +25,8 @@
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
+    "whatsapp": "node -r dotenv/config -r ts-node/register src/whatsapp.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
-
   },
   "dependencies": {
     "@doist/todoist-api-typescript": "^3.0.0",
