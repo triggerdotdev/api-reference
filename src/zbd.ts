@@ -3,13 +3,10 @@ import { z } from "zod";
 
 const client = new TriggerClient({ id: "api-reference" });
 
-// ZBD API Integration for Paying Bitcoin to ZBD Usernames
-
 // This code integrates the ZBD API to facilitate Bitcoin payments to ZBD usernames.
 // To use this integration, you need to create a ZBD project, which provides a unique API key
 // and a Bitcoin Lightning wallet. With this API key, you can programmatically handle Bitcoin
 // transactions, including receiving funds, making payments, and withdrawing Bitcoin.
-//
 // Learn how to create a project: [Create a project](https://zbd.dev/docs/dashboard/projects/create)
 // Detailed instructions for using the API key: [API Key Usage](https://zbd.dev/docs/dashboard/projects/api)
 
@@ -46,7 +43,8 @@ client.defineJob({
         );
         return response.json();
       },
-      // You can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Pay BTC to ZBD Username", icon: "zbd" }
     );
   },

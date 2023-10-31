@@ -6,7 +6,7 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // Create a Salesforce account: https://developer.salesforce.com/signup
 // jsforce SDK: https://developer.salesforce.com/docs/platform/functions/guide/develop.html#use-salesforce-apis
-// Salesforce provides API access for the following editions: Enterprise,  Unlimited, Developer or Performance Editions
+// Salesforce only provides API access for the following editions: Enterprise,  Unlimited, Developer or Performance Editions
 // Salesforce connection instance
 const conn = new jsforce.Connection({
   loginUrl: process.env.SF_LOGIN_URL,
@@ -25,7 +25,6 @@ conn.login(
   }
 );
 
-// Trigger job
 client.defineJob({
   id: "salesforce-create-contact",
   name: "Salesforce create contact",
@@ -53,7 +52,7 @@ client.defineJob({
         });
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Salesforce create contact", icon: "salesforce" }
     );
   },
