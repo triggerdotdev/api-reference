@@ -4,7 +4,7 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 
 const client = new TriggerClient({ id: "api-reference" });
 
-// Get your api key from https://web.novu.co/settings
+// Get your API key from https://web.novu.co/settings
 const novu = new Novu(process.env.NOVU_API_KEY ?? "");
 
 // Using official SDK kit: https://docs.novu.co/sdks/nodejs
@@ -44,7 +44,8 @@ client.defineJob({
 
         return subscriber.data;
       },
-      //you can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Create subscriber", icon: "novu" }
     );
   },

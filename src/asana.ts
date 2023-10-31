@@ -17,8 +17,8 @@ client.defineJob({
   trigger: eventTrigger({
     name: "asana.get.user",
     schema: z.object({
-      // This can either be the string "me", an email, or the gid of a user.
-      // You can get your user gid by first logging in to Asana in your browser,
+      // This can either be the string "me", an email, or the GID of a user.
+      // You can get your user GID by first logging in to Asana in your browser,
       // then visiting https://app.asana.com/api/1.0/users/me.
       userGid: z.string(),
     }),
@@ -32,7 +32,8 @@ client.defineJob({
         // This is the regular Asana SDK
         return asanaClient.users.getUser(payload.userGid);
       },
-      // You can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Get Asana User", icon: "asana" }
     );
   },
