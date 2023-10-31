@@ -5,6 +5,7 @@
   "scripts": {
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
+    "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "discord": "node -r dotenv/config -r ts-node/register src/discord.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
