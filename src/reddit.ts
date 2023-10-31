@@ -1,5 +1,5 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
-import z from "zod";
+import { z } from "zod";
 import { stringify } from "querystring";
 
 const client = new TriggerClient({ id: "api-reference" });
@@ -45,48 +45,49 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    // Wrap an SDK call in io.runTask so it's resumable and displays in logs
-    await io.runTask(
-      "Reddit Post",
+    // Getting an access token
+    const accessToken = await io.runTask(
+      "Getting access token...",
       async () => {
-        // Getting an access token
-        const accessToken = await io.runTask(
-          "Getting access token",
-          async () => {
-            return await fetch(endpointURLs.accessToken, requestOptions).then(
-              (response) => response.json()
-            );
-          }
+        return await fetch(endpointURLs.accessToken, requestOptions).then(
+          (response) => response.json()
         );
-
-        // Posting on reddit
-        const response = await io.runTask("Posting on subreddit", async () => {
-          return await fetch(endpointURLs.submit, {
-            ...requestOptions,
-            headers: {
-              ...requestOptions.headers,
-              Authorization: `bearer ${accessToken.access_token}`,
-            },
-            body: stringify({ ...payload, api_type: "json" }),
-          }).then((response) => response.json());
-        });
-
-        // Revoking the access token
-        await io.runTask("Revoking access token", async () => {
-          return await fetch(endpointURLs.revoke, {
-            ...requestOptions,
-            body: stringify({
-              token_type_hint: "access_token",
-              token: accessToken.access_token,
-            }),
-          }).then((response) => response.status);
-        });
-
-        return response;
       },
-      // Add metadata to the task to improve the display in the logs
-      { name: "Reddit Post", icon: "reddit" }
+      { name: "Getting access token", icon: "reddit" }
     );
+
+    // Posting on reddit
+    const response = await io.runTask(
+      "Posting on subreddit...",
+      async () => {
+        return await fetch(endpointURLs.submit, {
+          ...requestOptions,
+          headers: {
+            ...requestOptions.headers,
+            Authorization: `bearer ${accessToken.access_token}`,
+          },
+          body: stringify({ ...payload, api_type: "json" }),
+        }).then((response) => response.json());
+      },
+      { name: "Posting on subreddit", icon: "reddit" }
+    );
+
+    // Revoking the access token
+    await io.runTask(
+      "Revoking access token...",
+      async () => {
+        return await fetch(endpointURLs.revoke, {
+          ...requestOptions,
+          body: stringify({
+            token_type_hint: "access_token",
+            token: accessToken.access_token,
+          }),
+        }).then((response) => response.status);
+      },
+      { name: "Revoking access token", icon: "reddit" }
+    );
+
+    return response;
   },
 });
 
