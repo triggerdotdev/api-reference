@@ -1,14 +1,12 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
-import { TodoistApi } from "@doist/todoist-api-typescript"
-
+import { TodoistApi } from "@doist/todoist-api-typescript";
 
 const client = new TriggerClient({ id: "api-reference" });
 
 // https://developer.todoist.com/rest/v2/?javascript#getting-started
 // find your api reference https://todoist.com/help/articles/find-your-api-token-Jpzx9IIlB
-const todoistClientApi = new TodoistApi(process.env.TODOIST_API_TOKEN!)
-
+const todoistClientApi = new TodoistApi(process.env.TODOIST_API_TOKEN!);
 
 client.defineJob({
   id: "todoist-add-new-project",
@@ -17,7 +15,7 @@ client.defineJob({
   trigger: eventTrigger({
     name: "todoist.add.project",
     schema: z.object({
-      name: z.string()  // name of the project
+      name: z.string(), // name of the project
     }),
   }),
 
@@ -26,10 +24,10 @@ client.defineJob({
     const user = await io.runTask(
       "Add New Project",
       async () => {
-        // This is the regular Todoist Api client
-        return await todoistClientApi.addProject({name: payload.name})
+        return await todoistClientApi.addProject({ name: payload.name });
       },
-      // You can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Add Todoist project", icon: "todoist" }
     );
   },

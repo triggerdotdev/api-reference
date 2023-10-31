@@ -3,8 +3,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 const client = new TriggerClient({ id: "api-reference" });
 
 // API reference: https://cal.com/docs/enterprise-features/api/api-reference/
-// If you get the error 'An error occurred while querying the database', this may because you have linked calendars in your account.
-// This is a known Cal.com issue. Please reach out to us on Discord if you are having issues.
+// If you get the error 'An error occurred while querying the database', this may because you have
+// linked calendars in your account. This is a known Cal.com issue.
+// Please reach out to us on Discord if you need help.
 client.defineJob({
   id: "cal-dot-com-find-all-bookings",
   name: "Cal.com find all bookings",
@@ -19,9 +20,10 @@ client.defineJob({
       async () => {
         const url = `https://api.cal.com/v1/bookings?apiKey=${process.env.CAL_API_KEY}`;
         const response = await fetch(url);
-
         return response.json();
       },
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Find all bookings", icon: "cal" }
     );
   },

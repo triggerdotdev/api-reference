@@ -8,7 +8,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // Initialize the Square client with your credentials
 const squareClient = new Client({
   environment: Environment.Production, // Use Square.Environment.Sandbox for testing
-  accessToken: process.env.SQUARE_ACCESS_TOKEN!, // Get your access token at https://developer.squareup.com/docs/build-basics/access-tokens
+  accessToken: process.env.SQUARE_ACCESS_TOKEN!, // Get token here: https://developer.squareup.com/docs/build-basics/access-tokens
 });
 
 client.defineJob({
@@ -30,13 +30,13 @@ client.defineJob({
     await io.runTask(
       "Square create customer",
       async () => {
-        // After create a customer you can see it in the Square dashboard
+        // After creating a customer you can see them in the Square dashboard
         // at https://squareup.com/dashboard/customers/directory/all
         // See more https://developer.squareup.com/reference/square/customers-api/create-customer
         await squareClient.customersApi.createCustomer(payload);
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Square create customer", icon: "square" }
     );
   },

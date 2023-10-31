@@ -32,7 +32,6 @@ client.defineJob({
       "Google Map Geocode",
       async () => {
         // Make the geocode request
-
         const response = await map.geocode({
           params: {
             address,
@@ -44,7 +43,7 @@ client.defineJob({
         return JSON.parse(JSON.stringify(response.data));
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Google map geocode", icon: "google" }
     );
   },

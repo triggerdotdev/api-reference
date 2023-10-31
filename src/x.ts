@@ -62,7 +62,7 @@ client.defineJob({
         }).then((response) => response.json());
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Tweet X", icon: "twitter" }
     );
   },

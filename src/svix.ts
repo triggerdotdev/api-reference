@@ -9,7 +9,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // https://dashboard.svix.com/api-access
 const svix = new Svix(process.env.SVIX_API_KEY ?? "");
 
-// Using official svix sdk, https://github.com/svix/svix-webhooks/tree/main/javascript/
+// Using official Svix sdk, https://github.com/svix/svix-webhooks/tree/main/javascript/
 client.defineJob({
   id: "create-svix-application",
   name: "Create Svix application",
@@ -20,7 +20,7 @@ client.defineJob({
       name: z.string(),
       uid: z.string().optional(),
       rateLimit: z.number().optional(),
-      metadata: z.record(z.string(), z.string()).optional()
+      metadata: z.record(z.string(), z.string()).optional(),
     }),
   }),
   run: async (payload, io) => {
@@ -31,11 +31,12 @@ client.defineJob({
           name: payload.name,
           rateLimit: payload.rateLimit,
           uid: payload.uid,
-          metadata: payload.metadata
+          metadata: payload.metadata,
         });
         return app;
       },
-      // you can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Create application", icon: "svix" }
     );
   },

@@ -5,7 +5,7 @@ import * as PublicAPI from "@segment/public-api-sdk-typescript";
 const client = new TriggerClient({ id: "api-reference" });
 
 // Guide to create a segment public api: https://segment.com/docs/api/public-api/
-// You need to upgrade your account to a team account or business to get access to the public api
+// You need to upgrade your account to a team account or business to get access to the public API.
 const publicAPI = PublicAPI.configureApis(
   process.env.SEGMENT_PUBLIC_API_KEY ?? ""
 );
@@ -31,7 +31,7 @@ client.defineJob({
         return JSON.parse(JSON.stringify(source));
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "segment get source", icon: "segment" }
     );
   },

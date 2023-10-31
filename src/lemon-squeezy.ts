@@ -11,7 +11,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // Get API key from https://docs.lemonsqueezy.com/api#authentication
 const ls = new LemonSqueezy(process.env.LEMONSQUEEZY_API_KEY!);
 
-// Using official SDK; https://github.com/lmsqueezy/lemonsqueezy.js
+// Using the official SDK; https://github.com/lmsqueezy/lemonsqueezy.js
 client.defineJob({
   id: "get-lemon-squeezy-store-details",
   name: "Get Lemon Squeezy store details",
@@ -41,11 +41,11 @@ client.defineJob({
           id: payload.id,
           include: payload.include,
         });
-        // The return value has to be JSON serialiazable as it is stored in the databse.
-        // Thus stringifying and then parsing it in order to make sure that it is always a serializable JSON
+        // The return value has to be JSON serializable as it's stored in the database.
         return JSON.parse(JSON.stringify(store));
       },
-      //you can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Get Lemon Squeezy store details", icon: "lemonSqueezy" }
     );
   },

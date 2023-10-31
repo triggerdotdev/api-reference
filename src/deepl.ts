@@ -5,7 +5,6 @@ import * as deepl from "deepl-node";
 const client = new TriggerClient({ id: "api-reference" });
 
 // API documentation: https://www.deepl.com/docs-api/api-access
-// 
 // This code uses the deepl-node library.
 // You can find more examples and usage details at: https://github.com/DeepLcom/deepl-node
 const translator = new deepl.Translator(process.env.DEEPL_AUTH_KEY!);
@@ -18,7 +17,7 @@ client.defineJob({
     name: "deepl.translate",
     schema: z.object({
       text: z.string(),
-      targetLang: z.string(), // View availble languages: https://www.deepl.com/docs-api/translate-text
+      targetLang: z.string(), // Languages: https://www.deepl.com/docs-api/translate-text
     }),
   }),
 
@@ -35,7 +34,8 @@ client.defineJob({
         );
         return result;
       },
-      // You can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "DeepL Translate Text", icon: "deepl" }
     );
   },
