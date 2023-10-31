@@ -27,7 +27,9 @@ client.defineJob({
   trigger: eventTrigger({
     name: "google-drive-file-rename",
     schema: z.object({
-      fileId: z.string(), // The fileId is a unique identifier found in the Google Drive sharing link. Example: https://drive.google.com/file/d/FILE_ID/view
+      // The fileId is a unique identifier found in the Google Drive sharing link.
+      // E.g.: https://drive.google.com/file/d/FILE_ID/view
+      fileId: z.string(),
       newName: z.string(),
     }),
   }),
@@ -38,7 +40,7 @@ client.defineJob({
     await io.runTask(
       "Google Drive File Rename",
       async () => {
-        // Important Note: Don't forget to share the Google Drive file with the service account email for this code to work.
+        // NB: You must share the Google Drive file with the service account.
         await drive.files.update({
           fileId,
           requestBody: {
@@ -47,7 +49,7 @@ client.defineJob({
         });
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Google drive file rename", icon: "google" }
     );
   },

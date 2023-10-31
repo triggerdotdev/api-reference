@@ -43,7 +43,8 @@ client.defineJob({
         // Process the search results here
         return JSON.parse(JSON.stringify(searchResponse.data));
       },
-      // Add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "YouTube API Search", icon: "youtube" }
     );
   },

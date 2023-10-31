@@ -33,7 +33,8 @@ client.defineJob({
         // Call the Hugging Face API
         return await hf.textClassification(payload);
       },
-      // Add metadata to the task for improved log display
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Hugging Face inference", icon: "hugging-face" }
     );
   },
