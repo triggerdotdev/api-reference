@@ -29,6 +29,7 @@
     "notion": "node -r dotenv/config -r ts-node/register src/notion.ts",
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
+    "coinbase": "node -r dotenv/config -r ts-node/register src/coinbase.ts",
     "whatsapp": "node -r dotenv/config -r ts-node/register src/whatsapp.ts",
     "mailgun": "node -r dotenv/config -r ts-node/register src/mailgun.ts",
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
