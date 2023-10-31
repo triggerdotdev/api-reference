@@ -10,7 +10,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // after login from https://app.mailgun.com/mg/dashboard -> setting you can get api, and private_api_key
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
-  username: process.env.MAILGUN_API_TOKEN,
+  username: process.env.MAILGUN_API_KEY_ID,
   key: process.env.MAILGUN_PRIVATE_API_KEY,
 });
 
