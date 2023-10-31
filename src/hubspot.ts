@@ -7,7 +7,6 @@ const client = new TriggerClient({ id: "api-reference" });
 // SDK: https://github.com/hubspot/hubspot-api-nodejs
 // API Reference: https://developers.hubspot.com/docs/api/overview
 // Create an private app in HubSpot and get access token : https://developers.hubspot.com/docs/api/private-apps
-// Create a HubSpot client
 const hubspot = new Client({ accessToken: process.env.HUBSPOT_ACCESS_TOKEN });
 
 client.defineJob({
@@ -25,7 +24,6 @@ client.defineJob({
   run: async (payload, io, ctx) => {
     const { firstname, lastname, email } = payload;
 
-    // Create a contact in HubSpot
     await io.runTask(
       "Create HubSpot Contact",
       async () => {
@@ -35,6 +33,8 @@ client.defineJob({
           associations: [], // Optional
         });
       },
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Create HubSpot Contact", icon: "hubspot" }
     );
   },
