@@ -2,9 +2,6 @@ import { TriggerClient, cronTrigger, eventTrigger } from "@trigger.dev/sdk";
 import { Octokit } from "octokit";
 import z from "zod";
 
-// ! We now have a GitHub integration, which we recommend using instead of the Octokit SDK
-// ! GitHub integration docs: https://trigger.dev/docs/integrations/apis/github
-
 const client = new TriggerClient({ id: "api-reference" });
 
 // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
@@ -23,18 +20,19 @@ client.defineJob({
     }),
   }),
   run: async (payload, io, ctx) => {
-    //wrap an SDK call in io.runTask so it's resumable and displays in logs
+    // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     const repo = await io.runTask(
       "Get repo",
       async () => {
-        //this is the regular GitHub SDK
+        // This is the regular GitHub SDK
         const response = await octokit.rest.repos.get({
           owner: payload.owner,
           repo: payload.repo,
         });
         return response.data;
       },
-      //you can add metadata to the task to improve the display in the logs
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Get repo", icon: "github" }
     );
   },

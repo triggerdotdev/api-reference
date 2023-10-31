@@ -26,7 +26,7 @@ client.defineJob({
   trigger: eventTrigger({
     name: "google-calendar",
     schema: z.object({
-      calendarId: z.string(), // The calendar ID is under the Integrate Calendar section of the calendar settings
+      calendarId: z.string(), // The calendar ID is in the Integrate Calendar section of the calendar settings
       summary: z.string(),
       description: z.string().optional(),
       start: z.string(), // Format as ISO 8601 datetime string. Ex: "2021-08-01T12:00:00.000Z"
@@ -56,7 +56,7 @@ client.defineJob({
         await calendar.events.insert({ calendarId, requestBody });
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Google Calendar create event", icon: "calendar" }
     );
   },

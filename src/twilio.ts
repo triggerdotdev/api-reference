@@ -20,7 +20,10 @@ client.defineJob({
   trigger: eventTrigger({
     name: "twilio-send-message",
     schema: z.object({
-      from: z.string(), // Your Twilio phone number. Adding 'whatsapp:' before the number will send a WhatsApp message. https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn
+      // 'from' is Your Twilio phone number.
+      // Adding 'whatsapp:' before the number will send a WhatsApp message.
+      // https://console.twilio.com/us1/develop/sms/try-it-out/whatsapp-learn
+      from: z.string(),
       to: z.string(), // The phone number you want to send the message.
       body: z.string(), // The message body
     }),
@@ -35,7 +38,7 @@ client.defineJob({
         await twilioClient.messages.create({ from, to, body });
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Twilio send message", icon: "twilio" }
     );
   },

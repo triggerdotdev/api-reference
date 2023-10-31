@@ -17,8 +17,7 @@ const auth = new JWT({
   scopes: "https://www.googleapis.com/auth/spreadsheets", // The desired scope for accessing Google Sheets
 });
 
-// Initialize the Google Sheets API
-// You have to enable the Google Sheets API https://console.cloud.google.com/apis/
+// You have to enable the Google Sheets API: https://console.cloud.google.com/apis/
 const sheets = google.sheets({ version: "v4", auth });
 
 client.defineJob({
@@ -45,7 +44,7 @@ client.defineJob({
         const sheetsAPI = sheets.spreadsheets.values;
 
         await sheetsAPI.append({
-          // You must share your Google Sheet with your service account email otherwise the job will fail
+          // NB: You must share your Google Sheet with your service account email
           spreadsheetId: process.env.SPREADSHEET_ID,
           // Set a spreadsheet range
           range: range,
@@ -57,7 +56,7 @@ client.defineJob({
         });
       },
 
-      // Add metadata to the task to improve the display in the logs
+      // Add metadata to improve how the task displays in the logs
       { name: "Google Sheets append", icon: "google" }
     );
   },

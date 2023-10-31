@@ -12,8 +12,8 @@ const client = new TriggerClient({ id: "api-reference" });
 // https://cloud.google.com/nodejs/docs/reference/google-auth-library/latest/google-auth-library/jwt
 const auth = new JWT({
   email: process.env.GOOGLE_CLIENT_EMAIL, // The email associated with the service account
-  key: process.env.GOOGLE_PRIVATE_KEY!.split(String.raw`\n`).join("\n"), // The private key associated with the service account
-  scopes: ["https://www.googleapis.com/auth/gmail.send"], // The desired scope for sending Gmail messages
+  key: process.env.GOOGLE_PRIVATE_KEY!.split(String.raw`\n`).join("\n"), // The service account private key
+  scopes: ["https://www.googleapis.com/auth/gmail.send"], // The desired scope for sending Gmail emails
 });
 
 // In order to send an email from a user's account, you must enable Gmail API Domain-Wide Delegation of Authority:
@@ -52,7 +52,6 @@ client.defineJob({
       async () => {
         // Create the email message
         const email = `To: ${to}\r\nSubject: ${subject}\r\n\r\n${message}`;
-
         // Send the email
         const res = await gmail.users.messages.send({
           userId: "me",
@@ -63,6 +62,8 @@ client.defineJob({
 
         console.log("Message sent: ", res.data);
       },
+
+      // Add metadata to improve how the task displays in the logs
       { name: "Send Gmail", icon: "google" }
     );
   },
