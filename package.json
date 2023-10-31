@@ -32,6 +32,7 @@
     "mailgun": "node -r dotenv/config -r ts-node/register src/mailgun.ts",
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
     "lemon-squeezy": "node -r dotenv/config -r ts-node/register src/lemon-squeezy.ts",
+    "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
