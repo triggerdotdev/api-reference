@@ -2,7 +2,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { TodoistApi } from "@doist/todoist-api-typescript";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // https://developer.todoist.com/rest/v2/?javascript#getting-started
 // find your api reference https://todoist.com/help/articles/find-your-api-token-Jpzx9IIlB
@@ -33,6 +35,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

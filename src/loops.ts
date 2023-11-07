@@ -1,7 +1,9 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Replace this URL with the actual API endpoint you want to call in Loops
 const endpointURL = `${process.env.LOOPS_BASE_URL}/contacts/create`;
@@ -51,6 +53,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

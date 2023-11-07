@@ -5,7 +5,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 // when using in proper ESmodule setup you won't have to do this
 import LemonSqueezy from "@lemonsqueezy/lemonsqueezy.js/dist/index.cjs";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Get API key from https://docs.lemonsqueezy.com/api#authentication
 const ls = new LemonSqueezy(process.env.LEMONSQUEEZY_API_KEY!);
@@ -50,6 +52,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

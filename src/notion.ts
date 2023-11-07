@@ -2,7 +2,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { Client } from "@notionhq/client";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // API Reference: https://developers.notion.com/reference/intro
 // Create a new integration and access your token at https://www.notion.so/my-integrations
@@ -42,6 +44,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

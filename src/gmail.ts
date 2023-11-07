@@ -3,7 +3,9 @@ import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // NB: This job only works if you have a Google Workspace account
 
@@ -69,6 +71,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

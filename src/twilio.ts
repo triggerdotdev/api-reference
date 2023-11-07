@@ -2,7 +2,9 @@ import twilio from "twilio";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Initialize the Twilio instance
 // Twilio SDK https://github.com/twilio/twilio-node
@@ -44,6 +46,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

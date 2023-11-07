@@ -3,7 +3,9 @@ import { API } from "@discordjs/core";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // SDK: https://discord.js.org/docs/packages/core/1.0.1
 // To get the Discord bot token follow the instructions here:
@@ -49,6 +51,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

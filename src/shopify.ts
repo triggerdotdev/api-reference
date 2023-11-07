@@ -3,7 +3,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { shopifyApi, ApiVersion } from "@shopify/shopify-api";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Create a Shopify custom app: https://shopify.dev/tutorials/build-a-shopify-app-with-node-and-react
 // Shopify SDK: https://github.com/Shopify/shopify-api-js
@@ -63,6 +65,8 @@ client.defineJob({
   },
 });
 
-// These lines set up an Express server for the TriggerClient
+// hide-code
+// These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

@@ -1,7 +1,9 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // This code uses the REST API for Stability AI
 // Documentation can be found at: https://platform.stability.ai/docs/api-reference
@@ -104,6 +106,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

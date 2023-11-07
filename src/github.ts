@@ -2,7 +2,9 @@ import { TriggerClient, cronTrigger, eventTrigger } from "@trigger.dev/sdk";
 import { Octokit } from "octokit";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Create a personal access token at https://github.com/settings/tokens/new?scopes=repo
 const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
@@ -38,6 +40,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

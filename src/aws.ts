@@ -4,7 +4,9 @@ import { fromEnv } from "@aws-sdk/credential-providers";
 import z from "zod";
 
 // Create a TriggerClient for managing trigger jobs
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // AWS Lambda setup assumed. For more information on AWS Lambda:
 // https://docs.aws.amazon.com/lambda/latest/dg/getting-started.html
@@ -67,6 +69,8 @@ client.defineJob({
   },
 });
 
-// Start an Express server using the Trigger client
+// hide-code
+// These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

@@ -4,7 +4,9 @@ import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Create a service account and project: https://cloud.google.com/iam/docs/service-account-overview
 // Create a JWT (JSON Web Token) authentication instance for Google APIs.
@@ -60,6 +62,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

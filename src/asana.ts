@@ -1,9 +1,11 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 
-const asana = require("asana");
-
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
+
+const asana = require("asana");
 
 // Create a personal access token: https://developers.asana.com/docs/personal-access-token
 const asanaClient = asana.Client.create().useAccessToken(
@@ -39,6 +41,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

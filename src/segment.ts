@@ -2,7 +2,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import z from "zod";
 import * as PublicAPI from "@segment/public-api-sdk-typescript";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Guide to create a segment public api: https://segment.com/docs/api/public-api/
 // You need to upgrade your account to a team account or business to get access to the public API.
@@ -37,6 +39,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

@@ -2,7 +2,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { Client, Environment } from "square";
 import z from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // SDK: https://developer.squareup.com/docs/sdks/nodejs
 // Initialize the Square client with your credentials
@@ -42,6 +44,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

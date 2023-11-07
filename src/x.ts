@@ -3,7 +3,9 @@ import z from "zod";
 import { createHmac } from "crypto";
 import OAuth from "oauth-1.0a";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Create tokens at
 // https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api
@@ -68,6 +70,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

@@ -2,7 +2,9 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 import { createHmac } from "crypto";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // Get your API Key and Secret for follow: https://docs.cloud.coinbase.com/sign-in-with-coinbase/docs/api-key-authentication
 // Keep your API Secret when you create it, you can't see it again.
@@ -90,6 +92,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

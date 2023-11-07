@@ -1,7 +1,9 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // This code integrates the ZBD API to facilitate Bitcoin payments to ZBD usernames.
 // To use this integration, you need to create a ZBD project, which provides a unique API key
@@ -50,6 +52,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code

@@ -1,6 +1,8 @@
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 
+// hide-code
 const client = new TriggerClient({ id: "api-reference" });
+// end-hide-code
 
 // API reference: https://cal.com/docs/enterprise-features/api/api-reference/
 // If you get the error 'An error occurred while querying the database', this may because you have
@@ -29,6 +31,8 @@ client.defineJob({
   },
 });
 
+// hide-code
 // These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);
+// end-hide-code
