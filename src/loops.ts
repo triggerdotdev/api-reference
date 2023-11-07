@@ -37,7 +37,7 @@ client.defineJob({
   run: async (payload, io, ctx) => {
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
-      "loops create contract",
+      "loops create contact",
       async () => {
         const response = await fetch(endpointURL, {
           ...requestOptions,
