@@ -2,9 +2,7 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { google } from "googleapis";
 import z from "zod";
 
-const client = new TriggerClient({
-  id: "api-reference",
-});
+const client = new TriggerClient({ id: "api-reference" });
 
 // Get your API key here: https://console.developers.google.com/apis/credentials
 // Make sure to enable the YouTube Data API v3 https://console.cloud.google.com/apis/library/youtube.googleapis.com

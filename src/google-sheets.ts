@@ -4,9 +4,7 @@ import { google } from "googleapis";
 import { JWT } from "google-auth-library";
 import z from "zod";
 
-const client = new TriggerClient({
-  id: "api-reference",
-});
+const client = new TriggerClient({ id: "api-reference" });
 
 // Create a service account and project: https://cloud.google.com/iam/docs/service-account-overview
 // Create a JWT (JSON Web Token) authentication instance for Google APIs.

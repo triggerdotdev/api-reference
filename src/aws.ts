@@ -16,55 +16,55 @@ const client = new TriggerClient({ id: "api-reference" });
 // AWS SDK Credential Providers:
 // https://github.com/aws/aws-sdk-js-v3/tree/main/packages/credential-providers
 const lambdaClient = new LambdaClient({
-    region: process.env.AWS_REGION,
-    credentials: fromEnv(),
+  region: process.env.AWS_REGION,
+  credentials: fromEnv(),
 });
 
 // Define a Trigger job to invoke the AWS Lambda function
 client.defineJob({
-    // Job metadata
-    id: "invoke-aws-lambda-function",
-    name: "Invoke AWS Lambda function",
-    version: "1.0.0",
+  // Job metadata
+  id: "invoke-aws-lambda-function",
+  name: "Invoke AWS Lambda function",
+  version: "1.0.0",
 
-    // Set up a trigger for this job, in this case, an event trigger
-    trigger: eventTrigger({
-        name: "aws",
+  // Set up a trigger for this job, in this case, an event trigger
+  trigger: eventTrigger({
+    name: "aws",
 
-        // Define the schema for the payload. In this case, it expects a function name and a payload object with length and width.
-        schema: z.object({
-            funcName: z.string(),
-            payloadObject: z.object({ length: z.number(), width: z.number() }),
-        }),
+    // Define the schema for the payload. In this case, it expects a function name and a payload object with length and width.
+    schema: z.object({
+      funcName: z.string(),
+      payloadObject: z.object({ length: z.number(), width: z.number() }),
     }),
+  }),
 
-    // Define the code to run when the job is triggered
-    run: async (payload, io, ctx) => {
-        // Wrap an SDK call in io.runTask to make it resumable and display it in logs
-        const result = await io.runTask(
-            "Invoke Lambda",
-            async () => {
-                // Create an AWS Lambda invocation command
-                const command = new InvokeCommand({
-                    FunctionName: payload.funcName,
-                    Payload: JSON.stringify(payload.payloadObject),
-                    LogType: LogType.Tail,
-                });
+  // Define the code to run when the job is triggered
+  run: async (payload, io, ctx) => {
+    // Wrap an SDK call in io.runTask to make it resumable and display it in logs
+    const result = await io.runTask(
+      "Invoke Lambda",
+      async () => {
+        // Create an AWS Lambda invocation command
+        const command = new InvokeCommand({
+          FunctionName: payload.funcName,
+          Payload: JSON.stringify(payload.payloadObject),
+          LogType: LogType.Tail,
+        });
 
-                // Send the command to AWS Lambda
-                const { Payload, LogResult } = await lambdaClient.send(command);
+        // Send the command to AWS Lambda
+        const { Payload, LogResult } = await lambdaClient.send(command);
 
-                // Process the Lambda response and logs
-                const result = Buffer.from(Payload).toString();
-                const logs = Buffer.from(LogResult, "base64").toString();
+        // Process the Lambda response and logs
+        const result = Buffer.from(Payload).toString();
+        const logs = Buffer.from(LogResult, "base64").toString();
 
-                // Return the computed area and associated logs as task output
-                return { result, logs };
-            },
-            // Add metadata to the task to improve its display in the logs
-            { name: "Invoke Lambda", icon: "aws" }
-        );
-    },
+        // Return the computed area and associated logs as task output
+        return { result, logs };
+      },
+      // Add metadata to the task to improve its display in the logs
+      { name: "Invoke Lambda", icon: "aws" }
+    );
+  },
 });
 
 // Start an Express server using the Trigger client

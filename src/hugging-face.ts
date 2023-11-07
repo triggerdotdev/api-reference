@@ -40,5 +40,6 @@ client.defineJob({
   },
 });
 
+// These lines can be removed if you don't want to use express
 import { createExpressServer } from "@trigger.dev/express";
 createExpressServer(client);

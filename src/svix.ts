@@ -2,7 +2,6 @@ import z from "zod";
 import { Svix } from "svix";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 
-//
 const client = new TriggerClient({ id: "api-reference" });
 
 // Create an access token at https://api.svix.com/docs#section/Introduction/Authentication

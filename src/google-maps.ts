@@ -2,9 +2,7 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { Client } from "@googlemaps/google-maps-services-js";
 import z from "zod";
 
-const client = new TriggerClient({
-  id: "api-reference",
-});
+const client = new TriggerClient({ id: "api-reference" });
 
 // Get your API key here: https://console.developers.google.com/apis/credentials
 // Make sure to enable the Google Maps Data API https://console.cloud.google.com/apis/library/maps-backend.googleapis.com

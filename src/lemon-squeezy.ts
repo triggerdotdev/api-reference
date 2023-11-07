@@ -5,7 +5,6 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 // when using in proper ESmodule setup you won't have to do this
 import LemonSqueezy from "@lemonsqueezy/lemonsqueezy.js/dist/index.cjs";
 
-//
 const client = new TriggerClient({ id: "api-reference" });
 
 // Get API key from https://docs.lemonsqueezy.com/api#authentication

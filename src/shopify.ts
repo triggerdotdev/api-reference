@@ -3,7 +3,6 @@ import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { shopifyApi, ApiVersion } from "@shopify/shopify-api";
 import z from "zod";
 
-// Initialize a TriggerClient
 const client = new TriggerClient({ id: "api-reference" });
 
 // Create a Shopify custom app: https://shopify.dev/tutorials/build-a-shopify-app-with-node-and-react
