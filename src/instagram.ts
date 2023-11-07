@@ -5,7 +5,7 @@ import z from "zod";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-// You need professional instagram account that is connected with your facebook business account
+// You need a professional Instagram account that is connected with your facebook business account
 // Get started from here: https://developers.facebook.com/docs/instagram-api/getting-started
 // For permanent token you have to create system user: https://business.facebook.com/settings/system-users
 // You can find your instagram user id from here: https://business.facebook.com/settings/instagram-account-v2s
