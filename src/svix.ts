@@ -8,7 +8,7 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // Create an access token at https://api.svix.com/docs#section/Introduction/Authentication
 // https://dashboard.svix.com/api-access
-const svix = new Svix(process.env.SVIX_API_KEY ?? "");
+const svix = new Svix(process.env.SVIX_API_KEY!);
 
 // Using official Svix sdk, https://github.com/svix/svix-webhooks/tree/main/javascript/
 client.defineJob({

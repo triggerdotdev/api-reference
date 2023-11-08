@@ -35,7 +35,7 @@ client.defineJob({
 
     // Define the schema for the payload. In this case, it expects a function name and a payload object with length and width.
     schema: z.object({
-      funcName: z.string(),
+      functionName: z.string(),
       payloadObject: z.object({ length: z.number(), width: z.number() }),
     }),
   }),
@@ -48,7 +48,7 @@ client.defineJob({
       async () => {
         // Create an AWS Lambda invocation command
         const command = new InvokeCommand({
-          FunctionName: payload.funcName,
+          FunctionName: payload.functionName,
           Payload: JSON.stringify(payload.payloadObject),
           LogType: LogType.Tail,
         });
