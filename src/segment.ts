@@ -9,7 +9,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // Guide to create a segment public api: https://segment.com/docs/api/public-api/
 // You need to upgrade your account to a team account or business to get access to the public API.
 const publicAPI = PublicAPI.configureApis(
-  process.env.SEGMENT_PUBLIC_API_KEY ?? ""
+  process.env.SEGMENT_PUBLIC_API_KEY!
 );
 
 client.defineJob({

@@ -7,7 +7,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
 // Get your API key from https://web.novu.co/settings
-const novu = new Novu(process.env.NOVU_API_KEY ?? "");
+const novu = new Novu(process.env.NOVU_API_KEY!);
 
 // Using official SDK kit: https://docs.novu.co/sdks/nodejs
 client.defineJob({

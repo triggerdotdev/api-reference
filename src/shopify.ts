@@ -1,7 +1,10 @@
-import "@shopify/shopify-api/adapters/node";
 import { TriggerClient, eventTrigger } from "@trigger.dev/sdk";
 import { shopifyApi, ApiVersion } from "@shopify/shopify-api";
 import z from "zod";
+
+// Make sure to include this import
+// see: https://github.com/Shopify/shopify-api-js/blob/main/packages/shopify-api/docs/guides/runtimes.md
+import "@shopify/shopify-api/adapters/node";
 
 // hide-code
 const client = new TriggerClient({ id: "api-reference" });
