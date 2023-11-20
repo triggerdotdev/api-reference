@@ -19,6 +19,7 @@
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
+    "hubspot-http-endpoint": "node -r dotenv/config -r ts-node/register src/hubspot-http-endpoint.ts",
     "instagram": "node -r dotenv/config -r ts-node/register src/instagram.ts",
     "lemon-squeezy": "node -r dotenv/config -r ts-node/register src/lemon-squeezy.ts",
     "loops": "node -r dotenv/config -r ts-node/register src/loops.ts",
