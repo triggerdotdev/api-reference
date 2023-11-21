@@ -8,6 +8,7 @@
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "cal-http-endpoint": "node -r dotenv/config -r ts-node/register src/cal-http-endpoint.ts",
+    "clerk-http-endpoint": "node -r dotenv/config -r ts-node/register src/clerk-http-endpoint.ts",
     "coinbase": "node -r dotenv/config -r ts-node/register src/coinbase.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "discord": "node -r dotenv/config -r ts-node/register src/discord.ts",
