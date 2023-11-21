@@ -12,13 +12,13 @@ const client = new TriggerClient({ id: "api-reference" });
 // Create subscription for contact creation and deletion
 // Copy your client secret from the Auth tab and paste it in the .env file
 // Create an HTTP Endpoint, with the HubSpot details
-const hubspotdotcom = client.defineHttpEndpoint({
+const hubspot = client.defineHttpEndpoint({
   id: "hubspot",
   source: "hubspot.com",
   icon: "hubspot",
   verify: async (request) => {
     const bodyText = await request.text();
-    const source_string = process.env.HUBSPOTDOTCOM_SECRET! + bodyText;
+    const source_string = process.env.HUBSPOT_SECRET! + bodyText;
     const hash = createHash("sha256").update(source_string).digest("hex");
     const reqHash = request.headers.get("X-HubSpot-Signature");
     const success = hash === reqHash;
@@ -35,7 +35,7 @@ client.defineJob({
   version: "1.0.0",
   enabled: true,
   // Create a trigger from the HTTP endpoint
-  trigger: hubspotdotcom.onRequest(),
+  trigger: hubspot.onRequest(),
   run: async (request, io, ctx) => {
     const body = await request.json();
     await io.logger.info(`Body`, body);
