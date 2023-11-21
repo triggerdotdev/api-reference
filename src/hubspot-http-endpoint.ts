@@ -5,7 +5,8 @@ import { createHash } from "crypto";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-//Create private app in https://app.hubspot.com/private-apps/<Id>
+//Go to your normal hubspot.com account
+//Create private app in Settings > integrations > private apps
 //With scopes: crm.objects.contacts.read, crm.objects.contacts.write
 //And add your trigger webhooks url in target url.
 //Create subscription for contact creation and deletion
