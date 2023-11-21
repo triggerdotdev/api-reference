@@ -5,18 +5,17 @@ import { createHash } from "crypto";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-//Go to your normal hubspot.com account
-//Create private app in Settings > integrations > private apps
-//With scopes: crm.objects.contacts.read, crm.objects.contacts.write
-//And add your trigger webhooks url in target url.
-//Create subscription for contact creation and deletion
-//Client secret from Auth tab
-
-//create an HTTP Endpoint, with the hubspot.com details
+// Go to your normal HubSpot account
+// Create a private app in Settings > Integrations > Private apps
+// With scopes: 'crm.objects.contacts.read', 'crm.objects.contacts.write'
+// And add your trigger webhooks url in target url.
+// Create subscription for contact creation and deletion
+// Copy your client secret from the Auth tab and paste it in the .env file
+// Create an HTTP Endpoint, with the HubSpot details
 const hubspotdotcom = client.defineHttpEndpoint({
-  id: "hubspot.com",
+  id: "hubspot",
   source: "hubspot.com",
-  icon: "hubspotdotcom",
+  icon: "hubspot",
   verify: async (request) => {
     const bodyText = await request.text();
     const source_string = process.env.HUBSPOTDOTCOM_SECRET! + bodyText;
@@ -28,13 +27,14 @@ const hubspotdotcom = client.defineHttpEndpoint({
   },
 });
 
-//Job that runs when the HTTP endpoint is called from hubspot.com Create or delete contact
+// Job that runs when the HTTP endpoint is called from HubSpot
+// When a contact is created or deleted
 client.defineJob({
-  id: "http-hubspotdotcom",
-  name: "HTTP HubSpot.com",
+  id: "http-hubspot",
+  name: "HTTP HubSpot",
   version: "1.0.0",
   enabled: true,
-  //create a trigger from the HTTP endpoint
+  // Create a trigger from the HTTP endpoint
   trigger: hubspotdotcom.onRequest(),
   run: async (request, io, ctx) => {
     const body = await request.json();
