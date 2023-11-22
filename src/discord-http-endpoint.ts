@@ -13,11 +13,13 @@ const discord = client.defineHttpEndpoint({
         const body = await request.text();
         const signature = request.headers.get('x-signature-ed25519')
         const timestamp = request.headers.get('x-signature-timestamp')
+        const discordKey = process.env.DISCORD_APPLICATION_KEY
+        if (!discordKey) return { success: false, reason: 'Missing discord public key' }
         if (!signature || !timestamp) return { success: false, reason: 'Missing discord headers' }
         const success = nacl.sign.detached.verify(
             Buffer.from(timestamp + body),
             Buffer.from(signature, "hex"),
-            Buffer.from(process.env.DISCORD_APPLICATION_KEY!, "hex")
+            Buffer.from(discordKey, "hex")
         );
         if (success) return { success };
         return { success: false, reason: "Failed ed25519 verification" };
