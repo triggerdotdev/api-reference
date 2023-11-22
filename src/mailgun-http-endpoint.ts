@@ -28,7 +28,7 @@ const mailgundotcom = client.defineHttpEndpoint({
     },
 });
 
-//Job that runs when the HTTP endpoint is called from hubspot.com Create or delete contact
+//Job that runs when the HTTP endpoint is called from Mailgun.com when an email is sent
 client.defineJob({
     id: "http-mailgundotcom",
     name: "HTTP Mailgun.com",
