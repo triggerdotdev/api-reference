@@ -13,9 +13,9 @@ const client = new TriggerClient({ id: "api-reference", apiKey: process.env.TRIG
 
 //create an HTTP Endpoint, with the Mailgun.com details
 const mailgundotcom = client.defineHttpEndpoint({
-    id: "mailgun.com",
+    id: "mailgun",
     source: "mailgun.com",
-    icon: "mailgun.com",
+    icon: "mailgun",
     verify: async (request) => {
         const body = await request.json();
         const { timestamp, token, signature } = body.signature
