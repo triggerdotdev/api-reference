@@ -19,6 +19,7 @@
     "google-maps": "node -r dotenv/config -r ts-node/register src/google-maps.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
+    "hugging-face-http-endpoint": "node -r dotenv/config -r ts-node/register src/hugging-face-http-endpoint.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
     "hubspot-http-endpoint": "node -r dotenv/config -r ts-node/register src/hubspot-http-endpoint.ts",
     "instagram": "node -r dotenv/config -r ts-node/register src/instagram.ts",
