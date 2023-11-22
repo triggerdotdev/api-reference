@@ -37,6 +37,7 @@
     "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
+    "todoist-http-endpoint": "node -r dotenv/config -r ts-node/register src/todoist-http-endpoint.ts",
     "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
     "whatsapp": "node -r dotenv/config -r ts-node/register src/whatsapp.ts",
     "whatsapp-http-endpoint": "node -r dotenv/config -r ts-node/register src/whatsapp-http-endpoint.ts",
