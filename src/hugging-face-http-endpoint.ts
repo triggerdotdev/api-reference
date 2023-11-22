@@ -5,7 +5,7 @@ import { createHash } from "crypto";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-const hubspot = client.defineHttpEndpoint({
+const huggingFace = client.defineHttpEndpoint({
   id: "hugging-face",
   source: "huggingface.co",
   icon: "hugging-face",
@@ -20,7 +20,7 @@ client.defineJob({
   name: "HTTP Hugging Face",
   version: "1.0.0",
   enabled: true,
-  trigger: hubspot.onRequest(),
+  trigger: huggingFace.onRequest(),
   run: async (request, io, ctx) => {
     const body = await request.json();
     await io.logger.info(`Body`, body);
