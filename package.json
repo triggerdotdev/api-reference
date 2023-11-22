@@ -25,6 +25,7 @@
     "lemon-squeezy": "node -r dotenv/config -r ts-node/register src/lemon-squeezy.ts",
     "loops": "node -r dotenv/config -r ts-node/register src/loops.ts",
     "mailgun": "node -r dotenv/config -r ts-node/register src/mailgun.ts",
+    "mailgun-http-endpoint": "node -r dotenv/config -r ts-node/register src/mailgun-http-endpoint.ts",
     "notion": "node -r dotenv/config -r ts-node/register src/notion.ts",
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
     "reddit": "node -r dotenv/config -r ts-node/register src/reddit.ts",
