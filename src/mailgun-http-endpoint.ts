@@ -11,7 +11,7 @@ const client = new TriggerClient({ id: "api-reference", apiKey: process.env.TRIG
 //And add your trigger webhooks url in target url
 //Obtain the Webhook Key on the right of your window
 
-//create an HTTP Endpoint, with the hubspot.com details
+//create an HTTP Endpoint, with the Mailgun.com details
 const mailgundotcom = client.defineHttpEndpoint({
     id: "mailgun.com",
     source: "mailgun.com",
