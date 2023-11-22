@@ -12,7 +12,7 @@ const client = new TriggerClient({ id: "api-reference", apiKey: process.env.TRIG
 //Obtain the Webhook Key on the right of your window
 
 //create an HTTP Endpoint, with the hubspot.com details
-const hubspotdotcom = client.defineHttpEndpoint({
+const mailgundotcom = client.defineHttpEndpoint({
     id: "mailgun.com",
     source: "mailgun.com",
     icon: "mailgun.com",
@@ -35,7 +35,7 @@ client.defineJob({
     version: "1.0.0",
     enabled: true,
     //create a trigger from the HTTP endpoint
-    trigger: hubspotdotcom.onRequest(),
+    trigger: mailgundotcom.onRequest(),
     run: async (request, io, ctx) => {
         const body = await request.json();
         await io.logger.info(`Body`, body);
