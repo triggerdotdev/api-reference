@@ -18,11 +18,14 @@ const mailgundotcom = client.defineHttpEndpoint({
     icon: "mailgun.com",
     verify: async (request) => {
         const body = await request.json();
-        const hash = createHmac('sha256', process.env.MAILGUN_WEBHOOK_SIGNING_KEY!)
-            .update(body.signature.timestamp + body.signature.token)
+        const { timestamp, token, signature } = body.signature
+        const mailgunKey = process.env.MAILGUN_WEBHOOK_SIGNING_KEY
+        if (!mailgunKey) return { success: false, reason: 'Missing mailgun webhook signing key' }
+        if (!timestamp || !token) return { success: false, reason: 'Missing signature fields in request body' }
+        const hash = createHmac('sha256', mailgunKey)
+            .update(timestamp + token)
             .digest('hex')
-        const reqHash = body.signature.signature;
-        const success = hash === reqHash;
+        const success = hash === signature;
         if (success) return { success };
         return { success: false, reason: "Failed sha256 verification" };
     },
