@@ -33,8 +33,8 @@ const mailgundotcom = client.defineHttpEndpoint({
 
 //Job that runs when the HTTP endpoint is called from Mailgun.com when an email is sent
 client.defineJob({
-    id: "http-mailgundotcom",
-    name: "HTTP Mailgun.com",
+    id: "http-mailgun",
+    name: "HTTP Mailgun",
     version: "1.0.0",
     enabled: true,
     //create a trigger from the HTTP endpoint
