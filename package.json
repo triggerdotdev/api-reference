@@ -12,6 +12,7 @@
     "coinbase": "node -r dotenv/config -r ts-node/register src/coinbase.ts",
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "discord": "node -r dotenv/config -r ts-node/register src/discord.ts",
+    "discord-http-endpoint": "node -r dotenv/config -r ts-node/register src/discord-http-endpoint.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "google-calendar": "node -r dotenv/config -r ts-node/register src/google-calendar.ts",
@@ -74,6 +75,7 @@
     "react-dom": "^18.2.0",
     "square": "^32.0.0",
     "svix": "^1.13.0",
+    "tweetnacl": "^1.0.3",
     "twilio": "^4.19.0",
     "zod": "^3.21.4"
   },
