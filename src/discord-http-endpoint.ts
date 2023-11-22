@@ -25,7 +25,6 @@ const discord = client.defineHttpEndpoint({
 });
 
 // Job that runs when the HTTP endpoint is called from Discord
-// When a contact is created or deleted
 client.defineJob({
     id: "http-discord",
     name: "HTTP Discord",
