@@ -36,6 +36,7 @@
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
     "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
+    "svix-http-endpoint": "node -r dotenv/config -r ts-node/register src/svix-http-endpoint.ts",
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
     "whatsapp": "node -r dotenv/config -r ts-node/register src/whatsapp.ts",
