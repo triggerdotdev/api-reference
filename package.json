@@ -28,6 +28,7 @@
     "mailgun-http-endpoint": "node -r dotenv/config -r ts-node/register src/mailgun-http-endpoint.ts",
     "notion": "node -r dotenv/config -r ts-node/register src/notion.ts",
     "novu": "node -r dotenv/config -r ts-node/register src/novu.ts",
+    "novu-http-endpoint": "node -r dotenv/config -r ts-node/register src/novu-http-endpoint.ts",
     "reddit": "node -r dotenv/config -r ts-node/register src/reddit.ts",
     "salesforce": "node -r dotenv/config -r ts-node/register src/salesforce.ts",
     "segment": "node -r dotenv/config -r ts-node/register src/segment.ts",
