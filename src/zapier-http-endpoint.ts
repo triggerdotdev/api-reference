@@ -15,7 +15,7 @@ const zapier = client.defineHttpEndpoint({
     const userAgent = request.headers.get('user-agent')
     if (!(userAgent && userAgent.includes('Zapier'))) return { success: false, reason: "The user agent does not match with Zapier" };
     const authorization = request.headers.get('authorization')
-    if (process.env.ZAPIER_USER && process.env.ZAPIER_PASS) {
+    if ((process.env.ZAPIER_USER && process.env.ZAPIER_PASS) || authorization) {
       if (`Basic ${btoa(`${process.env.ZAPIER_USER}:${process.env.ZAPIER_PASS}`)}` === authorization) {
         return { success: true }
       }
