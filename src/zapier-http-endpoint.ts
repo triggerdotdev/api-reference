@@ -7,6 +7,12 @@ const client = new TriggerClient({
 });
 // end-hide-code
 
+// Create a workflow in Zapier
+// Select Webhooks by Zapier
+// Set the Webhook URL
+// By default, no auth is added, hence look for user-agent: Zapier
+// Add basic auth by piping the username|password
+// Now, look for the authorization header
 const zapier = client.defineHttpEndpoint({
   id: "zapier",
   source: "zapier.com",
