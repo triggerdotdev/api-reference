@@ -8,6 +8,10 @@ const client = new TriggerClient({
 });
 // end-hide-code
 
+// Go to dashboard.svix.com > Operational Webhooks
+// Create an endpoint with the Webhook URL
+// Obtain the Signing Secret from the right
+// To trigger the webhook, Testing > Send Event > Send Example
 const svix = client.defineHttpEndpoint({
   id: "svix",
   source: "svix.com",
