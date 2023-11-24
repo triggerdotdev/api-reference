@@ -8,6 +8,12 @@ const client = new TriggerClient({
 });
 // end-hide-code
 
+// Click on Profile > Settings > Integrations > Developer
+// Click on "Build Integrations"
+// Create a new app, enter the Webhook callback URL, and obtain the client_secret
+// To test the app for yourself, self authenticate via
+// https://developer.todoist.com/sync/v9/#webhooks:~:text=is%20not%20available).-,Webhook,-Activation%20%26%20Personal%20Use
+// Create a note in Todoist to trigger the webhook
 const todoist = client.defineHttpEndpoint({
   id: "todoist",
   source: "todoist.com",
