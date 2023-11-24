@@ -5,6 +5,12 @@ import { createHash } from "crypto";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
+// Go to Hugging Face Dashboard > Click on Profile > Settings
+// Go to Webhooks > Add a new webhook
+// Select yourself as the target
+// Add the webhook URL
+// Add the secret as "Test" (for example)
+// Create a model from the dashboard to trigger the webhook
 const huggingFace = client.defineHttpEndpoint({
   id: "hugging-face",
   source: "huggingface.co",
