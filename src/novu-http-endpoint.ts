@@ -7,6 +7,13 @@ const client = new TriggerClient({
 });
 // end-hide-code
 
+// Go to Novu Dashboard > Integrations Store
+// Click Add > Go with "Push Webhook"
+// Set the Webhook URL and Hmac Key (say "Test", for example)
+// Go to Workflows -> Add a workflow
+// Use the default trigger and add push webhook call
+// Enter the subscriberID that'll listen to the channel
+// Run Trigger / Send Notification to trigger the webhook
 const novu = client.defineHttpEndpoint({
   id: "novu",
   source: "novu.co",
