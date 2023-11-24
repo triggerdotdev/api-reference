@@ -4,14 +4,14 @@ import { TriggerClient, verifyRequestSignature } from "@trigger.dev/sdk";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-//WhatsApp
+// WhatsApp
 const whatsApp = client.defineHttpEndpoint({
   id: "whatsapp",
   source: "whatsapp.com",
   icon: "whatsapp",
-  //only needed for strange APIs like WhatsApp which don't setup the webhook until you pass the test
+  // This is only needed for certain APIs like WhatsApp which don't setup the webhook until you pass the test
   respondWith: {
-    //don't trigger runs if they match this filter
+    // Don't trigger runs if they match this filter
     skipTriggeringRuns: true,
     filter: {
       method: ["GET"],
