@@ -36,6 +36,7 @@
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
+    "square-http-endpoint": "node -r dotenv/config -r ts-node/register src/square-http-endpoint.ts",
     "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
