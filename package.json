@@ -35,6 +35,7 @@
     "segment": "node -r dotenv/config -r ts-node/register src/segment.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
+    "snyk-http-endpoint": "node -r dotenv/config -r ts-node/register src/snyk-http-endpoint.ts",
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
     "stability": "node -r dotenv/config -r ts-node/register src/stability.ts",
     "svix": "node -r dotenv/config -r ts-node/register src/svix.ts",
