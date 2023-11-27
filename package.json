@@ -33,6 +33,7 @@
     "reddit": "node -r dotenv/config -r ts-node/register src/reddit.ts",
     "salesforce": "node -r dotenv/config -r ts-node/register src/salesforce.ts",
     "segment": "node -r dotenv/config -r ts-node/register src/segment.ts",
+    "segment-http-endpoint": "node -r dotenv/config -r ts-node/register src/segment-http-endpoint.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
     "square": "node -r dotenv/config -r ts-node/register src/square.ts",
