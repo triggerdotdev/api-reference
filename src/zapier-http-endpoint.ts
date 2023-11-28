@@ -18,18 +18,18 @@ const zapier = client.defineHttpEndpoint({
   source: "zapier.com",
   icon: "zapier",
   verify: async (request) => {
-    const userAgent = request.headers.get('user-agent')
-    if (!(userAgent && userAgent.includes('Zapier'))) return { success: false, reason: "The user agent does not match with Zapier" };
-    const randomHeader = request.headers.get('x-trigger-secret')
-    if (randomHeader && randomHeader !== process.env.ZAPIER_TRIGGER_SECRET) {
-      return { success: false, reason: "The x-trigger-secret header did not match." };
-    }
-    const authorization = request.headers.get('authorization')
-    if ((process.env.ZAPIER_USER && process.env.ZAPIER_PASS) || authorization) {
-      if (`Basic ${btoa(`${process.env.ZAPIER_USER}:${process.env.ZAPIER_PASS}`)}` === authorization) {
-        return { success: true }
+    const secret = process.env.ZAPIER_TRIGGER_SECRET;
+    if (!secret) {
+      return {
+        success: false,
+        reason: "The Zapier secret needs to be set in the environment.",
       }
-      return { success: false, reason: "Basic Authentication Failed" }
+    }
+    if (secret !== request.headers.get("x-trigger-secret")) {
+      return {
+        success: false,
+        reason: "The secret does not match.",
+      }
     }
     return { success: true }
   },
