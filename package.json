@@ -32,6 +32,7 @@
     "novu-http-endpoint": "node -r dotenv/config -r ts-node/register src/novu-http-endpoint.ts",
     "reddit": "node -r dotenv/config -r ts-node/register src/reddit.ts",
     "salesforce": "node -r dotenv/config -r ts-node/register src/salesforce.ts",
+    "salesforce-http-endpoint": "node -r dotenv/config -r ts-node/register src/salesforce-http-endpoint.ts",
     "segment": "node -r dotenv/config -r ts-node/register src/segment.ts",
     "shopify": "node -r dotenv/config -r ts-node/register src/shopify.ts",
     "snyk": "node -r dotenv/config -r ts-node/register src/snyk.ts",
