@@ -31,7 +31,6 @@ const segment = client.defineHttpEndpoint({
   },
 });
 
-//Our job sends a Slack message when meetings are booked or canceled
 client.defineJob({
   id: 'http-segment',
   name: 'HTTP Segment',
