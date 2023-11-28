@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
+    "asana-http-endpoint": "node -r dotenv/config -r ts-node/register src/asana-http-endpoint.ts",
     "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
