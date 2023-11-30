@@ -64,8 +64,6 @@ export const youtube = client.defineHttpEndpoint({
   },
 });
 
-// Job that runs when the HTTP endpoint is called from YouTube
-// When a contact is created or deleted
 client.defineJob({
   id: "http-youtube",
   name: "HTTP YouTube",
