@@ -32,17 +32,21 @@ const discord = client.defineHttpEndpoint({
         },
         handler: async (request) => {
             const success = await verifyRequestSignature(request)
-            console.log('[Handler]:')
-            console.log(success[0])
             if (!success[0]) return new Response("Unauthorized", { status: 401 });
             const { type } = success[1]
-            return new Response(JSON.stringify({ type }), { headers: { 'Content-Type': 'application/json' } });
+            if (Number(type) === 1) return new Response(JSON.stringify({ type }), { headers: { 'Content-Type': 'application/json' } });
+            if (Number(type) === 2)
+                return new Response(JSON.stringify({
+                    type: 4,
+                    data: {
+                        content: `Hello, New!`,
+                    },
+                }), { headers: { 'Content-Type': 'application/json' } });
+            return new Response(JSON.stringify({ error: 'bad request' }), { status: 400 })
         },
     },
     verify: async (request) => {
         const success = await verifyRequestSignature(request)
-        console.log('[Verify]:')
-        console.log(success[0])
         if (success[0]) return { success: success[0] };
         return { success: false, reason: "Failed ed25519 verification" };
     },
