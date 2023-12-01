@@ -9,11 +9,11 @@ const client = new TriggerClient({ id: "api-reference" });
 // address is trigger.dev endpoint URL, which will be used to receive notifications
 // token is a secret string, which will be used to verify the request
 
-//create an HTTP Endpoint, with the google drive details
+//create an HTTP Endpoint, with the Google Drive details
 export const drive = client.defineHttpEndpoint({
-  id: "google-drive.com",
+  id: "google-drive",
   title: "Google Drive",
-  source: "google-drive.com",
+  source: "google-drive",
   icon: "google",
   respondWith: {
     skipTriggeringRuns: true,
