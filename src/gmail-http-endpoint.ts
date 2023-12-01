@@ -4,10 +4,30 @@ import { TriggerClient } from "@trigger.dev/sdk";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-// Docs https://developers.google.com/gmail/api/guides/push#protocol
+// API Reference
+// Push Notification https://developers.google.com/gmail/api/guides/push
 // Verification response https://cloud.google.com/pubsub/docs/authenticate-push-subscriptions
 
-//create an HTTP Endpoint, with the gmail details
+// Steps
+// Create Google Cloud Project https://console.cloud.google.com/projectcreate
+// Enable Gmail API https://console.cloud.google.com/apis/library/gmail.googleapis.com
+// Create gmail service account https://console.cloud.google.com/iam-admin/serviceaccounts
+// Create Topic https://console.cloud.google.com/cloudpubsub/topicList and note down the topic name
+// Create Subscription with the trigger endpoint. Delivery type: Push. Enable authentication and add the gmail service account email if need access grant.
+// Add publish privileges to Topics: Click on the topic 3 dot (more actions) -> View permissions -> Add Principal -> New principals: gmail-api-push@system.gserviceaccount.com and set Role: Pub/Sub Publisher
+
+// Watch request
+// Open postman and setting up watch request https://developers.google.com/gmail/api/guides/push#watch_request
+// Set authorization type OAuth 2.0
+// Set Auth URL https://accounts.google.com/o/oauth2/auth
+// Set Access Token URL https://accounts.google.com/o/oauth2/token
+// Set scope https://www.googleapis.com/auth/gmail.modify
+// Create OAuth client https://console.cloud.google.com/apis/credentials
+// Set application type: Web application and add redirect URL https://oauth.pstmn.io/v1/callback
+// Get OAuth client ID and secret and set to postman and click get access token and save.
+// Now send the watch request.
+
+// create an HTTP Endpoint, with the gmail details
 export const gmail = client.defineHttpEndpoint({
   id: "gmail.com",
   title: "gmail",
