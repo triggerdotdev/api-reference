@@ -32,9 +32,13 @@ const discord = client.defineHttpEndpoint({
         },
         handler: async (request) => {
             const success = await verifyRequestSignature(request)
+            // If Discord signature and timestamp do not match, return 401
             if (!success[0]) return new Response("Unauthorized", { status: 401 });
+            // If successfull, get the Interaction Type sent by Discord of the request
             const { type } = success[1]
+            // If the type is 1, it's a PING from discord, just respond with the type as is
             if (Number(type) === 1) return new Response(JSON.stringify({ type }), { headers: { 'Content-Type': 'application/json' } });
+            // If the type is 2, it's a Slash Command from discord, respond with what you want to be replied
             if (Number(type) === 2)
                 return new Response(JSON.stringify({
                     type: 4,
@@ -42,6 +46,7 @@ const discord = client.defineHttpEndpoint({
                         content: `Hello, New!`,
                     },
                 }), { headers: { 'Content-Type': 'application/json' } });
+            // If not of the above types, just return a 400
             return new Response(JSON.stringify({ error: 'bad request' }), { status: 400 })
         },
     },
