@@ -7,15 +7,14 @@ const client = new TriggerClient({ id: "api-reference" });
 // Apps Script Docs: https://developers.google.com/apps-script/reference
 // Triggers Docs: https://developers.google.com/apps-script/guides/triggers
 
-// Create an HTTP Endpoint, with the Google Docs details
-// (This will create the endpoint URL and Secret on the `trigger.dev` dashboard)
-
 // Open your Google Docs document
 // Go to Extensions > Apps Script
+// Get endpoint URL and secret from `trigger.dev` dashboard
 // create a new script with function that makes a POST request to the endpoint URL
 // with x-webhook-secret header and the event data as the body
 // Go to Triggers > Add Trigger > Select "select event type" > Save
 
+// Create an HTTP Endpoint, with the Google Docs details
 const docs = client.defineHttpEndpoint({
   id: "google-docs",
   source: "google-docs",
