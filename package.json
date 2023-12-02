@@ -19,6 +19,7 @@
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
     "google-maps": "node -r dotenv/config -r ts-node/register src/google-maps.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
+    "google-sheets-http-endpoint": "node -r dotenv/config -r ts-node/register src/google-sheets-http-endpoint.ts",
     "hugging-face": "node -r dotenv/config -r ts-node/register src/hugging-face.ts",
     "hugging-face-http-endpoint": "node -r dotenv/config -r ts-node/register src/hugging-face-http-endpoint.ts",
     "hubspot": "node -r dotenv/config -r ts-node/register src/hubspot.ts",
