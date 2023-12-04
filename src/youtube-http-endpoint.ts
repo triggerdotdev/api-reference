@@ -12,7 +12,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // callback URL is trigger.dev endpoint URL
 // Topic URL is https://www.youtube.com/xml/feeds/videos.xml?channel_id=CHANNEL_ID (replace CHANNEL_ID with your channel ID)
 // Select Verify Type as Synchronous
-// Choose mode as subscribe
+// Select mode as subscribe
 // For Verify Token and HMAC secret, enter the secret from the trigger.dev dashboard
 
 //create an HTTP Endpoint, with the YouTube details
