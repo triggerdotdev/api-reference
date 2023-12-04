@@ -4,10 +4,18 @@ import { TriggerClient } from "@trigger.dev/sdk";
 const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
-// create a channel to receive notifications from google drive API
 // Docs: https://developers.google.com/drive/api/guides/push
-// address is trigger.dev endpoint URL, which will be used to receive notifications
-// token is a secret string, which will be used to verify the request
+
+// Create a channel to receive notifications from google drive API
+// By making a POST request to https://www.googleapis.com/drive/v3/files/fileId/watch endpoint (replace fileId with your file id)
+// with authorization header and body as:
+// id is a unique string, which will be used to identify the channel
+// type is web_hook
+// address is the endpoint URL, where the notifications will be sent
+// token is a Secret string, which will be used to verify the request
+// Get endpoint URL and Secret from the `trigger.dev` dashboard
+
+// Set the GOOGLE_DRIVE_CHANNEL_TOKEN (Secret) in the .env file.
 
 //create an HTTP Endpoint, with the Google Drive details
 export const drive = client.defineHttpEndpoint({
