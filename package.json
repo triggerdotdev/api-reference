@@ -7,6 +7,7 @@
     "asana-http-endpoint": "node -r dotenv/config -r ts-node/register src/asana-http-endpoint.ts",
     "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
+    "brex-http-endpoint": "node -r dotenv/config -r ts-node/register src/brex-http-endpoint.ts",
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
     "cal-http-endpoint": "node -r dotenv/config -r ts-node/register src/cal-http-endpoint.ts",
     "clerk-http-endpoint": "node -r dotenv/config -r ts-node/register src/clerk-http-endpoint.ts",
