@@ -21,6 +21,7 @@
     "google-calendar": "node -r dotenv/config -r ts-node/register src/google-calendar.ts",
     "google-docs-http-endpoint": "node -r dotenv/config -r ts-node/register src/google-docs-http-endpoint.ts",
     "google-drive": "node -r dotenv/config -r ts-node/register src/google-drive.ts",
+    "google-drive-http-endpoint": "node -r dotenv/config -r ts-node/register src/google-drive-http-endpoint.ts",
     "google-maps": "node -r dotenv/config -r ts-node/register src/google-maps.ts",
     "google-sheets": "node -r dotenv/config -r ts-node/register src/google-sheets.ts",
     "google-sheets-http-endpoint": "node -r dotenv/config -r ts-node/register src/google-sheets-http-endpoint.ts",
