@@ -11,7 +11,8 @@ const client = new TriggerClient({ id: "api-reference" });
 // Open a document or create a new one
 // Click on Extensions > Apps Script
 
-// Add the following code to the script editor
+// Add the following code to the script editor:
+
 // function pushNotification(e) {
 //   // get endpoint url and secret key from trigger.dev dashboard
 //   var url = ''
@@ -38,8 +39,8 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // Save the script and click on the clock icon (Triggers) in the sidebar to open the Triggers page
 // Click on Add Trigger, which will open a dialog box
-// choose pushNotification as the function to run
-// select event type, by default it is set to On open
+// Choose pushNotification as the function to run
+// Select event type, by default it is set to On open
 // Click Save
 
 // Set the GOOGLE_DOCS_WEBHOOK_SECRET (Secret) in the .env file.
@@ -48,7 +49,7 @@ const client = new TriggerClient({ id: "api-reference" });
 const docs = client.defineHttpEndpoint({
   id: "google-docs",
   source: "google-docs",
-  icon: "google",
+  icon: "googledocs",
   verify: async (request) => {
     const secret = process.env.GOOGLE_DOCS_WEBHOOK_SECRET;
     if (!secret) return { success: false, reason: "Missing Secret" };

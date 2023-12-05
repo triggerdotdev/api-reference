@@ -7,18 +7,16 @@ const client = new TriggerClient({ id: "api-reference" });
 // end-hide-code
 
 // Docs: https://developers.google.com/youtube/v3/guides/push_notifications
-
 // Go to https://pubsubhubbub.appspot.com/subscribe and enter the following details:
 // callback URL is endpoint URL
 // Topic URL is https://www.youtube.com/xml/feeds/videos.xml?channel_id=CHANNEL_ID (replace CHANNEL_ID with your channel ID)
 // Select Verify Type as Synchronous
 // Select mode as subscribe
-// For HMAC secret and Verify Token, enter the same value. This is the secret that will be used to verify the request.
+// For Hmac secret and Verify Token, enter the same value. This is the secret that will be used to verify the request.
 // Get endpoint URL and Secret from the `trigger.dev` dashboard
-
 // Set the YOUTUBE_SIGNING_SECRET (Secret) in the .env file.
 
-//create an HTTP Endpoint, with the YouTube details
+// Create an HTTP Endpoint, with the YouTube details
 export const youtube = client.defineHttpEndpoint({
   id: "youtube.com",
   title: "YouTube",

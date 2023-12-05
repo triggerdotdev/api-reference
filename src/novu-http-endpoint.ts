@@ -11,7 +11,7 @@ const client = new TriggerClient({
 // Click Add > Go with "Push Webhook"
 // Set the Webhook URL and Hmac Key (say "Test", for example)
 // Go to Workflows -> Add a workflow
-// Use the default trigger and add push webhook call
+// Use the default trigger and add a push webhook call
 // Enter the subscriberID that'll listen to the channel
 // Run Trigger / Send Notification to trigger the webhook
 const novu = client.defineHttpEndpoint({
@@ -20,14 +20,14 @@ const novu = client.defineHttpEndpoint({
   icon: "novu",
   verify: async (request) => {
     if (!process.env.NOVU_SIGNING_SECRET) {
-      return { success: false, reason: "No Novu Signing Secret present." }
+      return { success: false, reason: "No Novu Signing Secret present." };
     }
     return await verifyRequestSignature({
       request,
       algorithm: "sha256",
-      headerName: 'x-novu-signature',
+      headerName: "x-novu-signature",
       secret: process.env.NOVU_SIGNING_SECRET,
-    })
+    });
   },
 });
 

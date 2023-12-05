@@ -11,7 +11,8 @@ const client = new TriggerClient({ id: "api-reference" });
 // Open a spreadsheet or create a new one
 // Click on Extensions > Apps Script
 
-// Add the following code to the script editor
+// Add the following code to the script editor:
+
 // function pushNotification(e) {
 //   // get endpoint url and secret key from trigger.dev dashboard
 //   var url = ''
@@ -38,8 +39,8 @@ const client = new TriggerClient({ id: "api-reference" });
 
 // Save the script and click on the clock icon (Triggers) in the sidebar to open the Triggers page
 // Click on Add Trigger, which will open a dialog box
-// choose pushNotification as the function to run
-// select event type, e.g. On open, On edit, On change etc.
+// Choose pushNotification as the function to run
+// Select event type, e.g. On open, On edit, On change etc.
 // Click Save
 
 // Set the GOOGLE_SHEETS_WEBHOOK_SECRET (Secret) in the .env file.
@@ -47,8 +48,8 @@ const client = new TriggerClient({ id: "api-reference" });
 // Create an HTTP Endpoint, with the Google Sheets details
 const sheets = client.defineHttpEndpoint({
   id: "google-sheets",
-  source: "google-sheets",
-  icon: "google",
+  source: "sheets.google.com",
+  icon: "googlesheets",
   verify: async (request) => {
     const secret = process.env.GOOGLE_SHEETS_WEBHOOK_SECRET;
     if (!secret) return { success: false, reason: "Missing Secret" };

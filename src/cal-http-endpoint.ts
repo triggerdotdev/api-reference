@@ -16,7 +16,7 @@ const timeFormatter = new Intl.DateTimeFormat("en-US", {
 
 const slack = new Slack({ id: "slack" });
 
-//create an HTTP Endpoint, with the cal.com details
+// Create an HTTP Endpoint, with the cal.com details
 const caldotcom = client.defineHttpEndpoint({
   id: "cal.com",
   source: "cal.com",
@@ -31,13 +31,13 @@ const caldotcom = client.defineHttpEndpoint({
   },
 });
 
-//Our job sends a Slack message when meetings are booked or canceled
+// This job sends a Slack message when meetings are booked or canceled
 client.defineJob({
   id: "http-caldotcom",
   name: "HTTP Cal.com",
   version: "1.0.0",
   enabled: true,
-  //create a trigger from the HTTP endpoint
+  // Create a trigger from the HTTP endpoint
   trigger: caldotcom.onRequest(),
   integrations: {
     slack,

@@ -18,26 +18,29 @@ const svix = client.defineHttpEndpoint({
   icon: "svix",
   verify: async (request) => {
     const body = await request.text();
-    const svixID = request.headers.get('svix-id')
-    const svixTimestamp = request.headers.get('svix-timestamp')
-    const svixSignature = request.headers.get('svix-signature')
+    const svixID = request.headers.get("svix-id");
+    const svixTimestamp = request.headers.get("svix-timestamp");
+    const svixSignature = request.headers.get("svix-signature");
     if (!svixID || !svixTimestamp || !svixSignature) {
-      return { success: false, reason: "Svix headers are missing" }
+      return { success: false, reason: "Svix headers are missing" };
     }
     const headers = {
       "svix-id": svixID,
       "svix-timestamp": svixTimestamp,
-      "svix-signature": svixSignature
+      "svix-signature": svixSignature,
     };
     const wh = new Webhook(process.env.SVIX_SECRET_KEY!);
     try {
-      // below throws an error if not matching, hence put in try/catch
+      // Below throws an error if not matching, hence put in try/catch
       wh.verify(body, headers);
-      return { success: true }
-    }
-    catch (e) {
-      console.log(e)
-      return { success: false, reason: "Svix verification failed due to " + (e.message || e.toString()) }
+      return { success: true };
+    } catch (e) {
+      console.log(e);
+      return {
+        success: false,
+        reason:
+          "Svix verification failed due to " + (e.message || e.toString()),
+      };
     }
   },
 });

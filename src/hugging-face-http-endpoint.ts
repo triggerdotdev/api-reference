@@ -14,9 +14,13 @@ const client = new TriggerClient({ id: "api-reference" });
 const huggingFace = client.defineHttpEndpoint({
   id: "hugging-face",
   source: "huggingface.co",
-  icon: "hugging-face",
+  icon: "huggingface",
   verify: async (request) => {
-    if (request.headers.get("x-webhook-secret") === process.env.HUGGING_FACE_WEBHOOK_SECRET) return { success: true };
+    if (
+      request.headers.get("x-webhook-secret") ===
+      process.env.HUGGING_FACE_WEBHOOK_SECRET
+    )
+      return { success: true };
     return { success: false, reason: "Webhook Secret Match Failed" };
   },
 });

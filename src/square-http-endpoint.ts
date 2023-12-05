@@ -14,10 +14,9 @@ const slack = new Slack({ id: "slack" });
 // Go to your Square developer account
 // Create and open an application
 // Go to Webhooks > Subscriptions
-// Add subscription
-// And add your trigger webhooks url in url field
+// Add a subscription and add your trigger webhooks url in url field
 // Select events you want to be notified about
-// save webhook
+// Save the webhook
 // Obtain the Webhook Signature Key and Notification URL
 
 // Create an HTTP Endpoint, with the Square details

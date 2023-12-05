@@ -11,18 +11,18 @@ const client = new TriggerClient({
 
 const slack = new Slack({ id: "slack" });
 
-// API KEY Docs: https://developer.brex.com/docs/authentication/
-// Sign in to dashboard.brex.com as an account admin .
-// Go to Developer > Settings .
-// Click Create Token .
+// API key Docs: https://developer.brex.com/docs/authentication/
+// Sign in to dashboard.brex.com as an account admin.
+// Go to Developer > Settings.
+// Click Create Token.
 // Add a name for your token and choose level of data access you need for your app; then click Create Token.
 
-// Webhooks Docs: https://developer.brex.com/openapi/webhooks_api/
+// Webhooks docs: https://developer.brex.com/openapi/webhooks_api/
 
-//create an HTTP Endpoint, with the Brex details
+// Create an HTTP Endpoint, with the Brex details
 const brex = client.defineHttpEndpoint({
   id: "brex",
-  source: "brex",
+  source: "brex.com",
   icon: "brex",
   verify: async (request) => {
     const webhook_id = request.headers.get("Webhook-Id");
@@ -72,13 +72,13 @@ const brex = client.defineHttpEndpoint({
   },
 });
 
-//Our job sends a Slack message when a user is updated
+// The job sends a Slack message when a user is updated
 client.defineJob({
   id: "http-brex",
   name: "HTTP Brex",
   version: "1.0.0",
   enabled: true,
-  //create a trigger from the HTTP endpoint
+  // Create a trigger from the HTTP endpoint
   trigger: brex.onRequest(),
   integrations: {
     slack,

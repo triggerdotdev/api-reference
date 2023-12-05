@@ -66,6 +66,7 @@ client.defineJob({
   name: "HTTP Clerk",
   version: "1.0.0",
   enabled: true,
+
   // Create a trigger from the HTTP endpoint
   trigger: clerk.onRequest(),
   run: async (request, io, ctx) => {

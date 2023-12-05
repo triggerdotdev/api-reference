@@ -23,15 +23,15 @@ const zapier = client.defineHttpEndpoint({
       return {
         success: false,
         reason: "The Zapier secret needs to be set in the environment.",
-      }
+      };
     }
     if (secret !== request.headers.get("x-trigger-secret")) {
       return {
         success: false,
         reason: "The secret does not match.",
-      }
+      };
     }
-    return { success: true }
+    return { success: true };
   },
 });
 
