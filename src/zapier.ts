@@ -10,7 +10,7 @@ const client = new TriggerClient({ id: "api-reference" });
 // Create Zaps app and create a Google Sheet with first field name for save name
 // 1. Set trigger to Webhooks by Zapier
 //  1a. Event: catch hook; Trigger child key: name
-//  1b. POST a request with JSON `[{"name": "TriggerDotDev"}]` to webhook URL then find records ans select request and continue
+//  1b. POST a request with JSON `[{"name": "TriggerDotDev"}]` to webhook URL then find records and select request and continue
 // 2. Set action to Google Sheets
 //  2a. Event: Create Spreadsheet Row
 //  2b. Set your Google account
