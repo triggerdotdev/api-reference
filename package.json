@@ -60,6 +60,7 @@
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
     "youtube": "node -r dotenv/config -r ts-node/register src/youtube.ts",
     "youtube-http-endpoint": "node -r dotenv/config -r ts-node/register src/youtube-http-endpoint.ts",
+    "zapier": "node -r dotenv/config -r ts-node/register src/zapier.ts",
     "zapier-http-endpoint": "node -r dotenv/config -r ts-node/register src/zapier-http-endpoint.ts",
     "zbd": "node -r dotenv/config -r ts-node/register src/zbd.ts",
     "dev:trigger": "trigger-cli dev --port 8080"
