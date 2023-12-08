@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "azure-http-endpoint": "node -r dotenv/config -r ts-node/register src/azure-http-endpoint.ts",
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
     "asana-http-endpoint": "node -r dotenv/config -r ts-node/register src/asana-http-endpoint.ts",
     "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
