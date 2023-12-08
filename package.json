@@ -55,6 +55,7 @@
     "todoist": "node -r dotenv/config -r ts-node/register src/todoist.ts",
     "todoist-http-endpoint": "node -r dotenv/config -r ts-node/register src/todoist-http-endpoint.ts",
     "twilio": "node -r dotenv/config -r ts-node/register src/twilio.ts",
+    "twilio-http-endpoint": "node -r dotenv/config -r ts-node/register src/twilio-http-endpoint.ts",
     "whatsapp": "node -r dotenv/config -r ts-node/register src/whatsapp.ts",
     "whatsapp-http-endpoint": "node -r dotenv/config -r ts-node/register src/whatsapp-http-endpoint.ts",
     "x": "node -r dotenv/config -r ts-node/register src/x.ts",
