@@ -15,6 +15,7 @@
     "deepl": "node -r dotenv/config -r ts-node/register src/deepl.ts",
     "discord": "node -r dotenv/config -r ts-node/register src/discord.ts",
     "discord-http-endpoint": "node -r dotenv/config -r ts-node/register src/discord-http-endpoint.ts",
+    "digitalocean": "node -r dotenv/config -r ts-node/register src/digitalocean.ts",
     "github": "node -r dotenv/config -r ts-node/register src/github.ts",
     "gmail": "node -r dotenv/config -r ts-node/register src/gmail.ts",
     "gmail-http-endpoint": "node -r dotenv/config -r ts-node/register src/gmail-http-endpoint.ts",
