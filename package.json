@@ -6,6 +6,7 @@
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
     "asana-http-endpoint": "node -r dotenv/config -r ts-node/register src/asana-http-endpoint.ts",
     "aws": "node -r dotenv/config -r ts-node/register src/aws.ts",
+    "aws-http-endpoint": "node -r dotenv/config -r ts-node/register src/aws-http-endpoint.ts",
     "brex": "node -r dotenv/config -r ts-node/register src/brex.ts",
     "brex-http-endpoint": "node -r dotenv/config -r ts-node/register src/brex-http-endpoint.ts",
     "cal": "node -r dotenv/config -r ts-node/register src/cal.ts",
