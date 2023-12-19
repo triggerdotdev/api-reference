@@ -20,6 +20,8 @@ const requestOptions: RequestInit = {
   },
 };
 
+//<> ### This is a title
+//<> **This is a bold comment 1 ** and `this is code`
 client.defineJob({
   id: "brex-create-title",
   name: "Brex Create Title",
@@ -32,6 +34,7 @@ client.defineJob({
       name: z.string(),
     }),
   }),
+         //</>
   run: async (payload, io, ctx) => {
     // Wrap an SDK call in io.runTask so it's resumable and displays in logs
     await io.runTask(
@@ -47,8 +50,10 @@ client.defineJob({
         return await response.json();
       },
 
+      //<> This is comment 2
       // Add metadata to improve how the task displays in the logs
       { name: "Brex Create Title", icon: "brex" }
+      //</>
     );
   },
 });
