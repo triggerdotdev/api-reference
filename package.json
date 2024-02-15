@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "anthropic": "node -r dotenv/config -r ts-node/register src/anthropic.ts",
     "azure-http-endpoint": "node -r dotenv/config -r ts-node/register src/azure-http-endpoint.ts",
     "asana": "node -r dotenv/config -r ts-node/register src/asana.ts",
     "asana-http-endpoint": "node -r dotenv/config -r ts-node/register src/asana-http-endpoint.ts",
@@ -72,6 +73,7 @@
     "dev:trigger": "trigger-cli dev --port 8080"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.13.0",
     "@aws-sdk/client-lambda": "^3.438.0",
     "@aws-sdk/credential-providers": "^3.438.0",
     "@discordjs/core": "^1.0.1",
